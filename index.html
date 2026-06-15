@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ronnie Tech Space — Coming Soon</title>
+  <title>Ronnie Tech Space</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Syne:wght@300;400;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -71,7 +72,7 @@
       border-bottom: 1px solid rgba(0,245,255,0.07);
     }
     .nav-logo {
-      font-family: var(--head); font-size: 0.78rem; font-weight:900;
+      font-family: var(--head); font-size: 1rem; font-weight:900;
       letter-spacing: 0.2em; color: var(--cyan);
       display:flex; align-items:center; gap:10px;
     }
@@ -85,7 +86,7 @@
     }
     .nav-links { display:flex; gap:28px; list-style:none; }
     .nav-links a {
-      font-family:var(--mono); font-size:0.65rem; letter-spacing:0.12em;
+      font-family:var(--mono); font-size:0.80rem; letter-spacing:0.12em;
       text-transform:uppercase; color:var(--muted); text-decoration:none;
       transition:color 0.2s, letter-spacing 0.2s;
     }
@@ -286,20 +287,36 @@
     }
 
     /* ═══════════ CHIPS ═══════════ */
+    .chipsHeader{
+      font-family:var(--body);
+      position:relative; z-index:1;
+      font-family:var(--body); font-weight:600;
+      font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+      line-height:1.25; max-width:640px;
+      margin: 28px auto 46px;
+      animation: slideUp 1s 0.25s ease both;
+    }
+
     .chips {
       position:relative; z-index:1;
-      display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+      display:flex; flex-wrap:wrap; gap:12px; justify-content:center;
       margin-bottom:0;
       animation: slideUp 1s 0.7s ease both;
     }
     .chip {
-      display:flex; align-items:center; gap:8px;
-      border:1px solid rgba(255,255,255,0.07); border-radius:100px;
-      padding:7px 16px; font-size:0.8rem;
-      color:rgba(240,246,255,0.55);
-      background:rgba(255,255,255,0.02);
-      transition:all 0.25s; cursor:default;
-    }
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  align-items: center; 
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07); 
+  border-radius: 100px;
+  padding: 7px 16px; 
+  font-size: 0.8rem;
+  color: rgba(240, 246, 255, 0.55);
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.25s; 
+  cursor: default;
+}
     .chip:hover {
       border-color:rgba(0,245,255,0.35); color:var(--cyan);
       background:rgba(0,245,255,0.04);
@@ -822,7 +839,7 @@
       We build websites that<br>make the internet <span class="hl">look good.</span>
     </h1>
     <p class="hero-sub">
-      Fast. Focused. Fun to use. From landing pages that convert to web apps that scale —
+      Fast. Focused. Fun to use. From landing pages that convert to web apps that scale
       your digital presence deserves better than average.
     </p>
 
@@ -845,28 +862,18 @@
 
     <!-- Notify -->
     <div class="notify">
-      <p class="notify-label">Get notified when we go live <span>→</span></p>
-      <form name="notify" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="notifyForm" onsubmit="handleNotifySubmit(event)">
+      <p class="notify-label">Get notified when we go live</p>
+      <form name="notify" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="notifyForm">
         <input type="hidden" name="form-name" value="notify" />
-        <p style="display:none;"><input name="bot-field" /></p>
+        <input type="hidden" name="bot-field" />
         <div class="input-wrap">
-          <input type="email" name="email" id="emailIn" placeholder="your@email.com" required />
-          <button type="submit" class="notify-btn">Notify Me</button>
+          <input type="email" name="email" id="emailIn" placeholder="examplee@gmail.com" />
+          <button type="button" class="notify-btn" id="notifyBtn" onclick="handleNotifySubmit()">Notify Me</button>
         </div>
       </form>
-      <div class="notify-success" id="notifyOk">🎉 &nbsp;You're on the list! We'll hit you up on launch day.</div>
+      <div class="notify-success" id="notifyOk"> &nbsp;You're on the list! We'll hit you up on launch day.</div>
     </div>
 
-    <!-- Service Chips -->
-    <div class="chips">
-      <button class="chip chip-btn" onclick="openService('uiux')">🎨 UI &amp; UX Design</button>
-      <button class="chip chip-btn" onclick="openService('frontend')">⚡ Frontend Development</button>
-      <button class="chip chip-btn" onclick="openService('backend')">🔧 Backend Development</button>
-      <button class="chip chip-btn" onclick="openService('ecommerce')">🛒 E-Commerce Solutions</button>
-      <button class="chip chip-btn" onclick="openService('webapps')">📊 Web Apps &amp; Dashboards</button>
-      <button class="chip chip-btn" onclick="openService('seo')">🚀 SEO &amp; Performance</button>
-      <button class="chip chip-btn chip-ai" onclick="openService('ai')">🤖 AI Automation</button>
-    </div>
   </section>
 
   <!-- ━━━━━━━━━━━ SERVICE MODAL ━━━━━━━━━━━ -->
@@ -913,7 +920,7 @@
       <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto 64px;">
         <div class="sec-label" style="justify-content:center;">What we do</div>
         <h2 class="sec-title">Everything your business needs<br>to <span class="hl">win online.</span></h2>
-        <p class="sec-body" style="margin:0 auto;">We are a focused web development studio. No fluff, no bloated agency packages — just sharp, purposeful services that get your digital presence where it needs to be.</p>
+        <p class="sec-body" style="margin:0 auto;">We are a focused web development studio. No fluff, no bloated agency packages just sharp, purposeful services that get your digital presence where it needs to be.</p>
       </div>
 
       <!-- Big intro card -->
@@ -921,7 +928,7 @@
         <div class="svc-intro-left">
           <div class="svc-intro-tag">// Our approach</div>
           <h3 class="svc-intro-heading">We don't just build websites.<br>We build <em>business tools.</em></h3>
-          <p class="svc-intro-body">Most agencies hand you a pretty template and disappear. We work differently. Every service we offer is designed to actually move the needle for your business — whether that's bringing in more customers, automating your workflows, or making your team's daily life easier. We ask the hard questions upfront so the end result isn't just good-looking, it's effective.</p>
+          <p class="svc-intro-body">Most agencies hand you a pretty template and disappear. We work differently. Every service we offer is designed to actually move the needle for your business, whether that's bringing in more customers, automating your workflows, or making your team's daily life easier. We ask the hard questions upfront so the end result isn't just good-looking, it's effective.</p>
           <div class="svc-intro-pillars">
             <div class="svc-pillar"><span class="svc-pillar-num">01</span><span class="svc-pillar-txt">Strategy first, design second</span></div>
             <div class="svc-pillar"><span class="svc-pillar-num">02</span><span class="svc-pillar-txt">Built for speed and real users</span></div>
@@ -946,25 +953,24 @@
 
         <div class="reveal svc-card svc-card-uiux" onclick="openService('uiux')" tabindex="0">
           <div class="svc-card-top">
-            <span class="svc-emoji">🎨</span>
-            <span class="svc-card-tag">Design</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxQeI5PixndjzcPr6za3ZC3za2OzIQdWC2Yc7vZhzUsg&s=10" alt="art palette emoji" class="svc-emoji" width="280" height="300"  style="border-radius: 10px">
           </div>
           <h3 class="svc-card-title">UI &amp; UX Design</h3>
-          <p class="svc-card-body">UI stands for <strong>User Interface</strong> — basically, how your website looks. UX stands for <strong>User Experience</strong> — how easy and enjoyable it is to use. Think of it like a shop: UI is the paint on the walls and the display shelves, UX is whether customers can actually find what they came in for without getting lost. We design both — so your website looks great <em>and</em> makes sense to the people visiting it.</p>
+          <p class="svc-card-body">UI stands for <strong>User Interface</strong> basically, how your website looks. UX stands for <strong>User Experience</strong> how easy and enjoyable it is to use. Think of it like a shop: UI is the paint on the walls and the display shelves, UX is whether customers can actually find what they came in for without getting lost. We design both so your website looks great <em>and</em> makes sense to the people visiting it.</p>
           <div class="svc-card-why">
             <div class="svc-why-label">In simple terms</div>
-            <p class="svc-why-text">If your website confuses visitors, they leave. If it looks outdated, they don't trust you. We make sure the very first thing a potential customer sees makes them want to stick around — and take action.</p>
+            <p class="svc-why-text">If your website confuses visitors, they leave. If it looks outdated, they don't trust you. We make sure the very first thing a potential customer sees makes them want to stick around and take action.</p>
           </div>
           <div class="svc-card-cta">Learn more →</div>
         </div>
 
         <div class="reveal svc-card svc-card-fe" onclick="openService('frontend')" tabindex="0" style="transition-delay:0.05s">
           <div class="svc-card-top">
-            <span class="svc-emoji">⚡</span>
-            <span class="svc-card-tag">Development</span>
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2kWsLs0VYXi4MTKpaSdXCRJIBITiu4CkhN2PmdjLSew&s=10" alt="laptop emoji" class="svc-emoji" width="280" height="300" style="border-radius: 10px">
+           
           </div>
           <h3 class="svc-card-title">Frontend Development</h3>
-          <p class="svc-card-body">The "frontend" is everything a visitor sees and interacts with on your website — the buttons, menus, images, text, and animations. When you click a button and something happens, that's frontend code at work. We build this part of your website to be fast, responsive on any device (phone, tablet, laptop), and smooth to use — because a clunky website drives customers straight to your competitors.</p>
+          <p class="svc-card-body">The "frontend" is everything a visitor sees and interacts with on your website, the buttons, menus, images, text, and animations. When you click a button and something happens, that's frontend code at work. We build this part of your website to be fast, responsive on any device (phone, tablet, laptop), and smooth to use because a clunky website drives customers straight to your competitors.</p>
           <div class="svc-card-why">
             <div class="svc-why-label">In simple terms</div>
             <p class="svc-why-text">Your website is your digital shopfront. If it loads slowly or breaks on mobile, customers walk away. We make sure it works perfectly for everyone, everywhere, on any screen.</p>
@@ -974,25 +980,24 @@
 
         <div class="reveal svc-card svc-card-be" onclick="openService('backend')" tabindex="0" style="transition-delay:0.1s">
           <div class="svc-card-top">
-            <span class="svc-emoji">🔧</span>
-            <span class="svc-card-tag">Infrastructure</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTye9XXmAOFgUbWgH3SF02SuMFlmNwCKk1ImtnmCZt6mA&s=10" alt="server emoji" class="svc-emoji" width="280" height="300" style="border-radius: 10px">  
+           
           </div>
           <h3 class="svc-card-title">Backend Development</h3>
-          <p class="svc-card-body">The backend is the part of your website that visitors never see — but that makes everything work. When someone creates an account, places an order, or submits a contact form, the backend is what saves that information, processes it, and sends it to the right place. Think of it as the kitchen of a restaurant: customers only see the dining room, but nothing gets served without what happens behind the scenes.</p>
+          <p class="svc-card-body">The backend is the part of your website that visitors never see but that makes everything work. When someone creates an account, places an order, or submits a contact form, the backend is what saves that information, processes it, and sends it to the right place. Think of it as the kitchen of a restaurant: customers only see the dining room, but nothing gets served without what happens behind the scenes.</p>
           <div class="svc-card-why">
             <div class="svc-why-label">In simple terms</div>
-            <p class="svc-why-text">If your website needs to store data, take bookings, send emails, or connect to other software — you need a backend. We build it securely so your customer information is always safe and your site keeps running without issues.</p>
+            <p class="svc-why-text">If your website needs to store data, take bookings, send emails, or connect to other software you need a backend. We build it securely so your customer information is always safe and your site keeps running without issues.</p>
           </div>
           <div class="svc-card-cta">Learn more →</div>
         </div>
 
         <div class="reveal svc-card svc-card-ec" onclick="openService('ecommerce')" tabindex="0" style="transition-delay:0.05s">
           <div class="svc-card-top">
-            <span class="svc-emoji">🛒</span>
-            <span class="svc-card-tag">Commerce</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDHqnUNvQco4t201iW3W650f3fustEVOQTtPT7g3P9Fg&s=10" alt="laptop emoji" class="svc-emoji" width="280" height="300" style="border-radius: 10px">
           </div>
           <h3 class="svc-card-title">E-Commerce Solutions</h3>
-          <p class="svc-card-body">E-commerce simply means <strong>selling products or services online</strong>. We build you an online store where customers can browse your products, add items to a cart, and pay — all without you needing to be there. Your store works 24 hours a day, 7 days a week, even when you are sleeping. We handle everything from the product listings and the shopping cart to the checkout process and payment integration.</p>
+          <p class="svc-card-body">E-commerce simply means <strong>selling products or services online</strong>. We build you an online store where customers can browse your products, add items to a cart, and pay all without you needing to be there. Your store works 24 hours a day, 7 days a week, even when you are sleeping. We handle everything from the product listings and the shopping cart to the checkout process and payment integration.</p>
           <div class="svc-card-why">
             <div class="svc-why-label">In simple terms</div>
             <p class="svc-why-text">Imagine having a salesperson who never sleeps, never takes a lunch break, and can serve hundreds of customers at the same time. That is what a well-built online store does for your business.</p>
@@ -1002,28 +1007,28 @@
 
         <div class="reveal svc-card svc-card-wa" onclick="openService('webapps')" tabindex="0" style="transition-delay:0.1s">
           <div class="svc-card-top">
-            <span class="svc-emoji">📊</span>
-            <span class="svc-card-tag">Applications</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvjrsiUQ8BqDRZCwP9U0hRA0yM891-2wuimAZ0nULHJg&s=10" alt="dashboard emoji" class="svc-emoji" width="280" height="300" style="border-radius: 10px">
+          
           </div>
           <h3 class="svc-card-title">Web Apps &amp; Dashboards</h3>
-          <p class="svc-card-body">A web app is like a program — but one that runs in your browser instead of being installed on a computer. Think of online banking, Google Docs, or your email inbox — those are web apps. We build custom ones tailored to your business: a dashboard that shows you your sales in real time, a booking system for your clients, a staff management tool, or an internal portal your team logs into every day to get work done.</p>
+          <p class="svc-card-body">A web app is like a program but one that runs in your browser instead of being installed on a computer. Think of online banking, Google Docs, or your email inbox those are web apps. We build custom ones tailored to your business: a dashboard that shows you your sales in real time, a booking system for your clients, a staff management tool, or an internal portal your team logs into every day to get work done.</p>
           <div class="svc-card-why">
             <div class="svc-why-label">In simple terms</div>
-            <p class="svc-why-text">If your team is managing important information in messy spreadsheets or juggling multiple WhatsApp groups to coordinate work — a custom web app replaces all of that with one clean, organised system built exactly for how your business operates.</p>
+            <p class="svc-why-text">If your team is managing important information in messy spreadsheets or juggling multiple WhatsApp groups to coordinate work a custom web app replaces all of that with one clean, organised system built exactly for how your business operates.</p>
           </div>
           <div class="svc-card-cta">Learn more →</div>
         </div>
 
         <div class="reveal svc-card svc-card-seo" onclick="openService('seo')" tabindex="0" style="transition-delay:0.15s">
           <div class="svc-card-top">
-            <span class="svc-emoji">🚀</span>
-            <span class="svc-card-tag">Growth</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlPTry83-BEdRZAWTPLPvU-ZQ2CxChj_78cJH8fS0yEA&s=10" alt="magnifying glass emoji" class="svc-emoji" width="280" height="300" style="border-radius: 10px">
+           
           </div>
           <h3 class="svc-card-title">SEO &amp; Performance</h3>
-          <p class="svc-card-body">SEO stands for <strong>Search Engine Optimisation</strong> — it is the process of making your website show up when people search on Google. When someone types "best plumber in Johannesburg" or "affordable catering Cape Town", SEO is what determines whether your business appears on page one or page ten. We also optimise your site's speed, because Google ranks faster websites higher — and visitors are far more likely to stay on a site that loads quickly.</p>
+          <p class="svc-card-body">SEO stands for <strong>Search Engine Optimisation</strong>, it is the process of making your website show up when people search on Google. When someone types "best plumber in Johannesburg" or "affordable catering Cape Town", SEO is what determines whether your business appears on page one or page ten. We also optimise your site's speed, because Google ranks faster websites higher and visitors are far more likely to stay on a site that loads quickly.</p>
           <div class="svc-card-why">
             <div class="svc-why-label">In simple terms</div>
-            <p class="svc-why-text">Having a beautiful website that nobody can find is like opening a shop in the middle of a field with no road to it. SEO builds the road — so the right customers can discover you at exactly the moment they are looking for what you offer.</p>
+            <p class="svc-why-text">Having a beautiful website that nobody can find is like opening a shop in the middle of a field with no road to it. SEO builds the road so the right customers can discover you at exactly the moment they are looking for what you offer.</p>
           </div>
           <div class="svc-card-cta">Learn more →</div>
         </div>
@@ -1033,17 +1038,16 @@
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
             <div>
               <div class="svc-card-top">
-                <span class="svc-emoji">🤖</span>
-                <span class="svc-card-tag svc-tag-ai">NEW · AI</span>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf5qMM94fZWC7Dp3jlR8BVC88szmJhaj87wU4s6-TqlQ&s=10" alt="robot emoji" class="svc-emoji" width="280" height="300" style="border-radius: 10px">
               </div>
               <h3 class="svc-card-title" style="font-size:1.3rem;">AI Automation</h3>
-              <p class="svc-card-body">AI Automation means using <strong>artificial intelligence to do tasks automatically</strong> — tasks that would otherwise take up your team's time. For example: a customer sends a message to your website at 2am asking about your pricing. Instead of waiting until morning for someone to reply, an AI assistant answers them instantly, correctly, and in a friendly tone. Or imagine your business receives dozens of forms or documents every day — AI can read them, sort them, and file them without a human touching each one. We build these kinds of smart systems directly into your website or business tools.</p>
+              <p class="svc-card-body">AI Automation means using <strong>artificial intelligence to do tasks automatically</strong>, tasks that would otherwise take up your team's time. For example: a customer sends a message to your website at 2am asking about your pricing. Instead of waiting until morning for someone to reply, an AI assistant answers them instantly, correctly, and in a friendly tone. Or imagine your business receives dozens of forms or documents every day AI can read them, sort them, and file them without a human touching each one. We build these kinds of smart systems directly into your website or business tools.</p>
               <div class="svc-card-cta" style="color:#d8b4fe;">Learn more →</div>
             </div>
             <div>
               <div class="svc-card-why" style="border-color:rgba(139,92,246,0.2);background:rgba(139,92,246,0.04);margin-bottom:16px;">
                 <div class="svc-why-label" style="color:#a78bfa;">In simple terms</div>
-                <p class="svc-why-text">Think about all the repetitive things your team does every day — answering the same questions, sorting emails, updating records, chasing people for information. AI Automation handles those tasks automatically, so your people can focus on the work that actually needs a human. It is not about replacing your team — it is about giving them back their time.</p>
+                <p class="svc-why-text">Think about all the repetitive things your team does every day answering the same questions, sorting emails, updating records, chasing people for information. AI Automation handles those tasks automatically, so your people can focus on the work that actually needs a human. It is not about replacing your team it is about giving them back their time.</p>
               </div>
               <div class="ai-examples">
                 <div class="ai-ex"><span>💬</span> AI chat assistant on your website</div>
@@ -1236,12 +1240,12 @@
           </ul>
 
           <div id="nlFormWrap">
-            <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="nlForm" onsubmit="handleNlSubmit(event)">
+            <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="nlForm">
               <input type="hidden" name="form-name" value="newsletter" />
-              <p style="display:none;"><input name="bot-field" /></p>
+              <input type="hidden" name="bot-field" />
               <div class="nl-form">
-                <input type="text" name="name" placeholder="Your name" id="nlName" required />
-                <input type="email" name="email" placeholder="your@email.com" id="nlEmail" required />
+                <input type="text" name="name" placeholder="Your name" id="nlName" />
+                <input type="email" name="email" placeholder="your@email.com" id="nlEmail" />
                 <select name="interest" id="nlInterest">
                   <option value="" disabled selected>I'm most interested in…</option>
                   <option>QRGO — QR Clock-In System</option>
@@ -1250,7 +1254,7 @@
                   <option>General Web Development</option>
                   <option>All of the above 🔥</option>
                 </select>
-                <button type="submit" class="nl-submit">Subscribe to Newsletter</button>
+                <button type="button" class="nl-submit" id="nlBtn" onclick="handleNlSubmit()">Subscribe to Newsletter</button>
               </div>
             </form>
           </div>
@@ -1420,57 +1424,6 @@
     document.getElementById('pct').textContent = '73%';
   }, 700);
 
-  /* ━━━ HERO NOTIFY FORM (Netlify) ━━━ */
-  function handleNotifySubmit(e) {
-    e.preventDefault();
-    const form = document.getElementById('notifyForm');
-    const email = document.getElementById('emailIn').value.trim();
-    if (!email || !email.includes('@')) {
-      document.getElementById('emailIn').style.boxShadow = '0 0 0 2px #ef4444';
-      setTimeout(() => document.getElementById('emailIn').style.boxShadow = '', 2000);
-      return;
-    }
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
-    })
-    .then(() => {
-      form.style.display = 'none';
-      document.getElementById('notifyOk').style.display = 'block';
-    })
-    .catch(() => {
-      // still show success on the frontend even if fetch fails locally
-      form.style.display = 'none';
-      document.getElementById('notifyOk').style.display = 'block';
-    });
-  }
-
-  /* ━━━ NEWSLETTER FORM (Netlify) ━━━ */
-  function handleNlSubmit(e) {
-    e.preventDefault();
-    const form = document.getElementById('nlForm');
-    const email = document.getElementById('nlEmail').value.trim();
-    if (!email || !email.includes('@')) {
-      document.getElementById('nlEmail').style.borderColor = '#ef4444';
-      setTimeout(() => document.getElementById('nlEmail').style.borderColor = '', 2000);
-      return;
-    }
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
-    })
-    .then(() => {
-      document.getElementById('nlFormWrap').style.display = 'none';
-      document.getElementById('nlOk').style.display = 'block';
-    })
-    .catch(() => {
-      document.getElementById('nlFormWrap').style.display = 'none';
-      document.getElementById('nlOk').style.display = 'block';
-    });
-  }
-
   /* ━━━ SCROLL REVEAL ━━━ */
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
@@ -1583,12 +1536,117 @@
 
   document.addEventListener('keydown', e => { if(e.key==='Escape') closeService(); });
 
+  /* ━━━ EMAILJS INIT ━━━ */
+  emailjs.init({ publicKey: 'aSBlUPM-PuaqB2XKT' });
+
+  const EJS_SERVICE_ID  = 'service_8gplny8';
+  const EJS_TEMPLATE_ID = 'template_h0q0r9j';
+
+  /* ━━━ HERO NOTIFY FORM ━━━ */
+  function handleNotifySubmit() {
+    const email = document.getElementById('emailIn').value.trim();
+    console.log('🔔 Notify clicked, email:', email);
+
+    if (!email || !email.includes('@')) {
+      document.getElementById('emailIn').style.boxShadow = '0 0 0 2px #ef4444';
+      setTimeout(() => document.getElementById('emailIn').style.boxShadow = '', 2000);
+      return;
+    }
+
+    const btn = document.getElementById('notifyBtn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    console.log('📧 Sending via EmailJS...');
+    emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, {
+      to_email: email,
+      to_name:  email.split('@')[0],
+      message:  'Thanks for signing up! We will notify you the moment Ronnie Tech Space goes live.'
+    })
+    .then(() => {
+      console.log('✅ EmailJS SUCCESS');
+      document.getElementById('notifyForm').style.display = 'none';
+      document.getElementById('notifyOk').style.display = 'block';
+    })
+    .catch((err) => {
+      console.error('❌ EmailJS FAILED:', JSON.stringify(err));
+      btn.textContent = 'Notify Me';
+      btn.disabled = false;
+      alert('Something went wrong: ' + JSON.stringify(err));
+    });
+
+    // Also submit to Netlify in background
+    const formData = new FormData();
+    formData.append('form-name', 'notify');
+    formData.append('email', email);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    })
+    .then(() => console.log('✅ Netlify form submitted'))
+    .catch((err) => console.warn('⚠️ Netlify submit failed (normal on localhost):', err));
+  }
+
+  /* ━━━ NEWSLETTER FORM ━━━ */
+  function handleNlSubmit() {
+    const email    = document.getElementById('nlEmail').value.trim();
+    const name     = document.getElementById('nlName').value.trim() || 'there';
+    const interest = document.getElementById('nlInterest').value || 'our services';
+    console.log('📰 Newsletter clicked, email:', email, 'name:', name);
+
+    if (!email || !email.includes('@')) {
+      document.getElementById('nlEmail').style.borderColor = '#ef4444';
+      setTimeout(() => document.getElementById('nlEmail').style.borderColor = '', 2000);
+      return;
+    }
+
+    const btn = document.getElementById('nlBtn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    console.log('📧 Sending newsletter email via EmailJS...');
+    emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, {
+      to_email: email,
+      to_name:  name,
+      interest: interest,
+      message:  'Welcome to the Ronnie Tech Space newsletter! You are now subscribed to our company updates.'
+    })
+    .then(() => {
+      console.log('✅ EmailJS SUCCESS');
+      document.getElementById('nlFormWrap').style.display = 'none';
+      document.getElementById('nlOk').style.display = 'block';
+    })
+    .catch((err) => {
+      console.error('❌ EmailJS FAILED:', JSON.stringify(err));
+      btn.textContent = 'Subscribe to Newsletter';
+      btn.disabled = false;
+      alert('Something went wrong: ' + JSON.stringify(err));
+    });
+
+    // Also submit to Netlify in background
+    const formData = new FormData();
+    formData.append('form-name', 'newsletter');
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('interest', interest);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    })
+    .then(() => console.log('✅ Netlify form submitted'))
+    .catch((err) => console.warn('⚠️ Netlify submit failed (normal on localhost):', err));
+  }
+
+  /* ━━━ SMOOTH NAV ━━━ */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const t = document.querySelector(a.getAttribute('href'));
-      if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth' }); }
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
+
   </script>
 </body>
 </html>
