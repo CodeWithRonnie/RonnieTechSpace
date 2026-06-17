@@ -1565,6 +1565,7 @@
     })
     .then(() => {
       console.log('✅ EmailJS SUCCESS');
+      document.getElementById('emailIn').value = '';
       document.getElementById('notifyForm').style.display = 'none';
       document.getElementById('notifyOk').style.display = 'block';
     })
@@ -1591,8 +1592,9 @@
   /* ━━━ NEWSLETTER FORM ━━━ */
   function handleNlSubmit() {
     const email    = document.getElementById('nlEmail').value.trim();
-    const name     = document.getElementById('nlName').value.trim() || 'there';
+    const name     = document.getElementById('nlName').value.trim();
     const interest = document.getElementById('nlInterest').value || 'our services';
+    const toName   = name || 'there';
     console.log('📰 Newsletter clicked, email:', email, 'name:', name);
 
     if (!email || !email.includes('@')) {
@@ -1608,12 +1610,15 @@
     console.log('📧 Sending newsletter email via EmailJS...');
     emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, {
       to_email: email,
-      to_name:  name,
+      to_name:  toName,
       interest: interest,
       message:  'Welcome to the Ronnie Tech Space newsletter! You are now subscribed to our company updates.'
     })
     .then(() => {
       console.log('✅ EmailJS SUCCESS');
+      document.getElementById('nlName').value = '';
+      document.getElementById('nlEmail').value = '';
+      document.getElementById('nlInterest').selectedIndex = 0;
       document.getElementById('nlFormWrap').style.display = 'none';
       document.getElementById('nlOk').style.display = 'block';
     })
