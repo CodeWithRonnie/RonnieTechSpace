@@ -76,6 +76,9 @@
       letter-spacing: 0.2em; color: var(--cyan);
       display:flex; align-items:center; gap:10px;
     }
+    .nav-logo img {
+      width:30px; height:auto; display:block;
+    }
     .nav-logo-dot {
       width:8px; height:8px; border-radius:50%; background:var(--cyan);
       animation: pulse-dot 2s ease-in-out infinite;
@@ -639,6 +642,10 @@
       background:linear-gradient(135deg, #fff 0%, var(--cyan) 60%);
       -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
       margin-bottom:6px;
+      display:flex; align-items:center; justify-content:center; gap:10px;
+    }
+    .foot-logo img {
+      width:28px; height:auto; display:block;
     }
     .foot-tag { font-family:var(--mono); font-size:0.62rem; color:var(--muted); letter-spacing:0.14em; margin-bottom:28px; }
     .foot-nav { display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; }
@@ -811,6 +818,7 @@
   <nav>
     <a href="#hero" style="text-decoration:none;cursor:pointer;">
       <div class="nav-logo">
+        <img src="Ronnie.Logo.png" alt="Ronnie Tech Space logo">
         <div class="nav-logo-dot"></div>
         RONNIE TECH SPACE
       </div>
@@ -1324,7 +1332,7 @@
   <!-- ━━━━━━━━━━━ FOOTER ━━━━━━━━━━━ -->
   <div id="foot">
     <a href="#hero" style="text-decoration:none;cursor:pointer;">
-      <div class="foot-logo">RONNIE TECH SPACE</div>
+      <div class="foot-logo"><img src="Ronnie.Logo.png" alt="Ronnie Tech Space logo">RONNIE TECH SPACE</div>
     </a>
     <div class="foot-tag">// Web Development Studio · Johannesburg, South Africa</div>
     <div class="foot-nav">
@@ -1446,49 +1454,49 @@
   /* ━━━ SERVICE MODAL ━━━ */
   const SERVICES = [
     {
-      id:'uiux', emoji:'🎨', eyebrow:'Service 01 of 07', title:'UI & UX Design',
+      id:'uiux', emoji:'', eyebrow:'Service 01 of 07', title:'UI & UX Design',
       desc:'Great design is the difference between a website people use and one they close in three seconds. We design interfaces that feel effortless — beautiful, intuitive, and aligned with your brand from the first pixel to the last interaction.',
       features:['User research & persona mapping','Wireframing and interactive prototypes','High-fidelity visual design','Responsive layouts for all screen sizes','Design system creation','Accessibility (WCAG) compliance'],
       tech:['Figma','Adobe XD','Framer','Zeplin','Storybook'],
       bestFor:'Startups launching their first product, businesses rebranding, or anyone whose current site is not converting visitors into customers.'
     },
     {
-      id:'frontend', emoji:'⚡', eyebrow:'Service 02 of 07', title:'Frontend Development',
+      id:'frontend', emoji:'', eyebrow:'Service 02 of 07', title:'Frontend Development',
       desc:'We turn designs into fast, pixel-perfect, living websites. Our frontend code is clean, maintainable, and built for performance — not just looks. Every animation is purposeful, every interaction is smooth.',
       features:['HTML5 / CSS3 / JavaScript (ES6+)','React & Next.js applications','Vue.js & Nuxt.js','Responsive & mobile-first development','Component-based architecture','Cross-browser compatibility'],
       tech:['React','Next.js','Vue','TypeScript','Tailwind CSS','Vite'],
       bestFor:'Businesses that need a modern, fast-loading website or web app built properly — not patched together with page builders.'
     },
     {
-      id:'backend', emoji:'🔧', eyebrow:'Service 03 of 07', title:'Backend Development',
+      id:'backend', emoji:'', eyebrow:'Service 03 of 07', title:'Backend Development',
       desc:'The engine under the hood. We build the APIs, databases, and server logic that power your product — secure, scalable, and built to handle whatever you throw at it.',
       features:['RESTful API design & development','Database architecture & optimisation','User authentication & authorisation','Third-party API integrations','Cloud deployment & hosting setup','Server security hardening'],
       tech:['Node.js','Python','PHP','PostgreSQL','MySQL','MongoDB','Redis'],
       bestFor:'Products that need real logic behind them — user accounts, data storage, payment processing, integrations with external services.'
     },
     {
-      id:'ecommerce', emoji:'🛒', eyebrow:'Service 04 of 07', title:'E-Commerce Solutions',
+      id:'ecommerce', emoji:'', eyebrow:'Service 04 of 07', title:'E-Commerce Solutions',
       desc:'Online stores that actually sell. We build e-commerce experiences that make buying feel easy — fast product pages, smooth checkout, and a backend you can actually manage without a developer on speed dial.',
       features:['Custom online store development','Shopping cart & checkout flow','Payment gateway integration','Product catalogue management','Inventory & order management','Mobile shopping optimisation'],
       tech:['WooCommerce','Shopify','Stripe','PayFast','PayPal','Flutterwave'],
       bestFor:'Retailers, boutiques, wholesalers, or service businesses wanting to sell online with full control over their store.'
     },
     {
-      id:'webapps', emoji:'📊', eyebrow:'Service 05 of 07', title:'Web Apps & Dashboards',
+      id:'webapps', emoji:'', eyebrow:'Service 05 of 07', title:'Web Apps & Dashboards',
       desc:"When a website isn't enough, you need a web application. We build custom tools, internal dashboards, and full-stack apps that your team actually wants to use — not just can use.",
       features:['Custom web application development','Admin & management dashboards','Real-time data display','Role-based access control','Data visualisation & charts','Progressive Web App (PWA) support'],
       tech:['React','Chart.js','D3.js','Node.js','WebSockets','Firebase'],
       bestFor:'Businesses needing internal tools, client portals, reporting dashboards, booking systems, or anything that goes beyond a standard website.'
     },
     {
-      id:'seo', emoji:'🚀', eyebrow:'Service 06 of 07', title:'SEO & Performance',
+      id:'seo', emoji:'', eyebrow:'Service 06 of 07', title:'SEO & Performance',
       desc:"What's the point of a beautiful website if nobody can find it? We optimise your site to rank on Google and load so fast your visitors never bounce — because speed is the best UX.",
       features:['Technical SEO audit & fixes','Core Web Vitals optimisation','Page speed & load time tuning','On-page SEO (meta, schema, headings)','Google Search Console setup','Ongoing SEO reporting'],
       tech:['Lighthouse','PageSpeed Insights','Ahrefs','Google Analytics','Schema.org','Cloudflare'],
       bestFor:"Any business that wants more organic traffic, better Google rankings, and a site that doesn't fail the technical checks that kill your visibility."
     },
     {
-      id:'ai', emoji:'🤖', eyebrow:'Service 07 of 07', title:'AI Automation',
+      id:'ai', emoji:'', eyebrow:'Service 07 of 07', title:'AI Automation',
       desc:'We integrate AI into your web products to automate repetitive tasks, power smarter features, and give your business a serious competitive edge. From AI chatbots to intelligent data processing — we make it practical, not gimmicky.',
       features:['AI chatbot integration (GPT, Claude, Gemini)','Automated document processing','Smart form handling & routing','Content generation pipelines','Recommendation engines','AI-powered search & filtering'],
       tech:['OpenAI','Anthropic Claude','LangChain','Python','n8n','Zapier','Vercel AI SDK'],
@@ -1555,8 +1563,9 @@
   /* ━━━ EMAILJS INIT ━━━ */
   emailjs.init({ publicKey: 'aSBlUPM-PuaqB2XKT' });
 
-  const EJS_SERVICE_ID  = 'service_1vhvy0g';
-  const EJS_TEMPLATE_ID = 'template_wc5g0ip';
+  const EJS_SERVICE_ID         = 'service_1vhvy0g';
+  const EJS_NOTIFY_TEMPLATE_ID = 'template_r9tglya';
+  const EJS_TEMPLATE_ID        = 'template_wc5g0ip';
 
   /* ━━━ HERO NOTIFY FORM ━━━ */
   function handleNotifySubmit() {
@@ -1574,7 +1583,7 @@
     btn.disabled = true;
 
     console.log('📧 Sending via EmailJS...');
-    emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, {
+    emailjs.send(EJS_SERVICE_ID, EJS_NOTIFY_TEMPLATE_ID, {
       to_email: email,
       to_name:  email.split('@')[0],
       message:  'Thanks for signing up! We will notify you the moment Ronnie Tech Space goes live.'
