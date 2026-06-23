@@ -348,8 +348,9 @@
     .wave-divider svg { width:100%; height:100%; }
 
     /* ═══════════════════════════════ SECTION SHARED ══════════════════════════════ */
-    section { position:relative; z-index:1; }
-    .inner { max-width:1100px; margin:0 auto; padding:96px 32px; }
+    section { position:relative; z-index:1; background-size: 200px; background-position: center; background-repeat: no-repeat; opacity: 1; }
+    section::before { content:''; position:absolute; inset:0; background-image:url('./Ronnie.Logo.png'); background-size:300px; background-position:center; background-repeat:no-repeat; opacity:0.03; pointer-events:none; z-index:0; }
+    .inner { max-width:1100px; margin:0 auto; padding:96px 32px; position:relative; z-index:1; }
     .sec-label {
       font-family:var(--mono); font-size:0.65rem; letter-spacing:0.25em;
       text-transform:uppercase; color:var(--cyan); margin-bottom:14px;
@@ -1074,7 +1075,7 @@
           <p class="sec-body">Ronnie Tech Space is a web development studio that gives a damn. We build custom, high-performance websites and web apps — not templates. Every pixel is intentional, every line of code is clean, and every project ships on time.</p>
 
           <ul class="value-list">
-            <li><span class="v-icon">⚡</span> Blazing-fast sites that Google actually loves</li>
+            <li><span class="v-icon"></span> Blazing-fast sites that Google actually loves</li>
             <li><span class="v-icon">🎯</span> Built around your goals, not cookie-cutter templates</li>
             <li><span class="v-icon">🔒</span> Secure, scalable, and built to last</li>
             <li><span class="v-icon">🤝</span> Honest quotes, real deadlines, zero drama</li>
@@ -1150,9 +1151,12 @@
         <!-- QRGO -->
         <div class="p-card card-qr reveal">
           <div class="p-card-inner">
-            <div class="p-emoji">📲</div>
+            <div class="p-emoji">
+            <img src="QRGo.png" alt="ambulance image" width="280" height="300" style="border-radius: 10px">
+
+            </div>
             <span class="p-tag">HR · Workforce Tech</span>
-            <h3 class="p-title">QRGO — Smart Clock-In</h3>
+            <h3 class="p-title">QRGO  Smart Clock-In</h3>
             <p class="p-desc">Scan a QR code, you're clocked in. Scan again, you're out. No apps. No fuss. Every scan logs straight into your company's system with a timestamp.</p>
             <ul class="p-features">
               <li><span class="p-feat-dot"></span> Unique QR per employee</li>
@@ -1164,20 +1168,22 @@
             <div class="p-footer">
               <div class="p-status-row">
                 <div class="p-status"><span class="sdot sdot-blue"></span> In Development</div>
-                <div class="p-pct">60%</div>
+                <div class="p-pct">20%</div>
               </div>
               <div class="mini-track"><div class="mini-fill"></div></div>
             </div>
           </div>
         </div>
 
-        <!-- ERGO -->
+        <!-- RESQGO -->
         <div class="p-card card-ergo reveal" style="transition-delay:0.1s">
           <div class="p-card-inner">
-            <div class="p-emoji">🚗</div>
+            <div class="p-emoji">
+              <img src="RESQGo.png" alt="ambulance image" width="280" height="300" style="border-radius: 10px">
+            </div>
             <span class="p-tag">Health · Transport</span>
-            <h3 class="p-title">erGo — Medical On-Demand</h3>
-            <p class="p-desc">Someone gets sick at work — one tap, the nearest standby car is dispatched. Think Uber, but the cars are always waiting, and they're there for when it actually matters.</p>
+            <h3 class="p-title">RESQGo  Medical On-Demand</h3>
+            <p class="p-desc">Someone gets sick at work, one tap, and the nearest standby car is dispatched. Think Uber, but the cars are always waiting, and they're there for when it actually matters.</p>
             <ul class="p-features">
               <li><span class="p-feat-dot"></span> Live map of standby vehicles</li>
               <li><span class="p-feat-dot"></span> One-tap dispatch from any browser</li>
@@ -1188,7 +1194,7 @@
             <div class="p-footer">
               <div class="p-status-row">
                 <div class="p-status"><span class="sdot sdot-violet"></span> In Development</div>
-                <div class="p-pct">35%</div>
+                <div class="p-pct">66%</div>
               </div>
               <div class="mini-track"><div class="mini-fill"></div></div>
             </div>
@@ -1198,10 +1204,13 @@
         <!-- INKLOOP -->
         <div class="p-card card-ink reveal" style="transition-delay:0.2s">
           <div class="p-card-inner">
-            <div class="p-emoji">📰</div>
+            <div class="p-emoji">
+              <img src="InkLoop.png" alt="newspaper image" width="280" height="300" style="border-radius: 10px">
+
+            </div>
             <span class="p-tag">Internal Comms</span>
-            <h3 class="p-title">InkLoop — Company Newspaper</h3>
-            <p class="p-desc">Your company's own digital newspaper. Publish announcements, team spotlights, and internal updates in a proper newspaper format — no more mass emails nobody reads.</p>
+            <h3 class="p-title">InkLoop  Company Newspaper</h3>
+            <p class="p-desc">Your company's own digital newspaper. Publish announcements, team spotlights, and internal updates in a proper newspaper format, no more mass emails nobody reads.</p>
             <ul class="p-features">
               <li><span class="p-feat-dot"></span> Rich article editor with images</li>
               <li><span class="p-feat-dot"></span> Sections: HR, Tech, Culture, News</li>
@@ -1235,10 +1244,10 @@
           <p class="sec-body" style="margin-bottom:0">Our internal-style company newsletter — launch news, dev updates, web tips, and team highlights. Like a newspaper, but for your inbox.</p>
 
           <ul class="nl-perks">
-            <li><span class="nl-perk-icon">🚀</span> Launch announcements for all three products</li>
-            <li><span class="nl-perk-icon">🛠️</span> Behind-the-scenes build updates & dev logs</li>
-            <li><span class="nl-perk-icon">💡</span> Web dev tips you can actually use</li>
-            <li><span class="nl-perk-icon">🏆</span> Team spotlights and company milestones</li>
+            <li><span class="nl-perk-icon"></span> Launch announcements for all three products</li>
+            <li><span class="nl-perk-icon"></span> Behind-the-scenes build updates & dev logs</li>
+            <li><span class="nl-perk-icon"></span> Web dev tips you can actually use</li>
+            <li><span class="nl-perk-icon"></span> Team spotlights and company milestones</li>
           </ul>
 
           <div id="nlFormWrap">
@@ -1250,17 +1259,17 @@
                 <input type="email" name="email" placeholder="your@email.com" id="nlEmail" />
                 <select name="interest" id="nlInterest">
                   <option value="" disabled selected>I'm most interested in…</option>
-                  <option>QRGO — QR Clock-In System</option>
-                  <option>erGo — Medical Transport</option>
-                  <option>InkLoop — Company Newspaper</option>
+                  <option>QRGO QR Clock-In System</option>
+                  <option>RESQGo Medical Transport</option>
+                  <option>InkLoop Company Newspaper</option>
                   <option>General Web Development</option>
-                  <option>All of the above 🔥</option>
+                  <option>All of the above</option>
                 </select>
                 <button type="button" class="nl-submit" id="nlBtn" onclick="handleNlSubmit()">Subscribe to Newsletter</button>
               </div>
             </form>
           </div>
-          <div class="nl-ok" id="nlOk">🎊 &nbsp;Welcome to the Ronnie Tech inner circle. First edition incoming!</div>
+          <div class="nl-ok" id="nlOk"> &nbsp;Welcome to the Ronnie Tech inner circle. First edition incoming!</div>
         </div>
 
         <!-- Newspaper mockup -->
@@ -1272,7 +1281,7 @@
             </div>
             <div class="nl-ticker">
               <div class="ticker-inner">
-                🔵 QRGO hits 60% dev milestone &nbsp;·&nbsp; 🟣 erGo first vehicle fleet onboarded &nbsp;·&nbsp; 🟢 InkLoop editor UI live in staging &nbsp;·&nbsp; 🌐 Ronnie Tech Space website launching soon &nbsp;·&nbsp; 🔵 QRGO hits 60% dev milestone &nbsp;·&nbsp; 🟣 erGo first vehicle fleet onboarded &nbsp;·&nbsp; 🟢 InkLoop editor UI live in staging &nbsp;·&nbsp; 🌐 Ronnie Tech Space website launching soon
+                🔵 QRGO hits 60% dev milestone &nbsp;·&nbsp; 🟣 RESQGo first vehicle fleet onboarded &nbsp;·&nbsp; 🟢 InkLoop editor UI live in staging &nbsp;·&nbsp; 🌐 Ronnie Tech Space website launching soon &nbsp;·&nbsp; 🔵 QRGO hits 60% dev milestone &nbsp;·&nbsp; 🟣 RESQGo first vehicle fleet onboarded &nbsp;·&nbsp; 🟢 InkLoop editor UI live in staging &nbsp;·&nbsp; 🌐 Ronnie Tech Space website launching soon
               </div>
             </div>
             <div class="nl-articles">
@@ -1287,8 +1296,8 @@
               <div class="nl-art">
                 <div class="nl-n">02</div>
                 <div>
-                  <div class="nl-at">erGo secures first transport partner</div>
-                  <div class="nl-ad">We've onboarded our first standby vehicle fleet for the erGo pilot. The live dispatch UI is running in staging — looking sharp.</div>
+                  <div class="nl-at">RESQGo secures first transport partner</div>
+                  <div class="nl-ad">We've onboarded our first standby vehicle fleet for the RESQGo pilot. The live dispatch UI is running in staging — looking sharp.</div>
                   <span class="nl-badge">🏢 Company News</span>
                 </div>
               </div>
