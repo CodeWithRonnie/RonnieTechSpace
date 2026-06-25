@@ -43,20 +43,7 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
-    .corner { position: fixed; width: 50px; height: 50px; z-index: 5; pointer-events: none; }
-    .corner::before, .corner::after { content:''; position:absolute; background:var(--cyan); opacity:0.5; }
-    .corner-tl { top:20px; left:20px; }
-    .corner-tl::before { top:0;left:0;width:2px;height:100%; }
-    .corner-tl::after  { top:0;left:0;width:100%;height:2px; }
-    .corner-tr { top:20px; right:20px; }
-    .corner-tr::before { top:0;right:0;width:2px;height:100%; }
-    .corner-tr::after  { top:0;right:0;width:100%;height:2px; }
-    .corner-bl { bottom:20px; left:20px; }
-    .corner-bl::before { bottom:0;left:0;width:2px;height:100%; }
-    .corner-bl::after  { bottom:0;left:0;width:100%;height:2px; }
-    .corner-br { bottom:20px; right:20px; }
-    .corner-br::before { bottom:0;right:0;width:2px;height:100%; }
-    .corner-br::after  { bottom:0;right:0;width:100%;height:2px; }
+
 
     /* ═══════════════════════════════ NAV ══════════════════════════════ */
     nav {
@@ -624,6 +611,54 @@
       background:rgba(16,185,129,0.04);
     }
 
+    /* ═══════════════════════════════ CONTACT ══════════════════════════════ */
+    #contact { background:rgba(10,15,30,0.6); }
+    .contact-content { text-align:center; }
+    .contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px; }
+    
+    .contact-card {
+      background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.06);
+      border-radius:20px; padding:32px 24px;
+      transition:transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .contact-card:hover {
+      transform:translateY(-6px);
+      border-color:rgba(0,245,255,0.25);
+      box-shadow:0 20px 50px rgba(0,245,255,0.1);
+    }
+    
+    .contact-icon {
+      font-size:2.5rem; margin-bottom:16px; display:block;
+    }
+    
+    .contact-card h3 {
+      font-family:var(--head); font-size:1.1rem; font-weight:700;
+      color:var(--white); margin-bottom:12px; letter-spacing:0.04em;
+    }
+    
+    .contact-card p {
+      font-size:0.9rem; color:var(--muted); line-height:1.7; margin:0;
+    }
+    
+    .contact-card a {
+      color:var(--cyan); text-decoration:none; transition:color 0.2s;
+    }
+    .contact-card a:hover { color:var(--green); }
+    
+    .contact-cta {
+      margin-top:56px; text-align:center;
+    }
+    .contact-btn {
+      display:inline-flex; align-items:center; gap:8px;
+      background:linear-gradient(135deg, #2563eb, #00f5ff);
+      border:none; border-radius:12px; padding:16px 32px;
+      font-family:var(--head); font-size:0.68rem; font-weight:700;
+      letter-spacing:0.12em; color:#04060f; cursor:pointer;
+      text-transform:uppercase; transition:opacity 0.2s, transform 0.15s;
+      text-decoration:none;
+    }
+    .contact-btn:hover { opacity:0.85; transform:scale(0.98); }
+
     /* ═══════════════════════════════ FOOTER ══════════════════════════════ */
     #foot {
       position:relative; z-index:1; text-align:center;
@@ -724,8 +759,8 @@
 
     .svc-card {
       background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.07);
-      border-radius:20px; padding:26px 24px;
-      display:flex; flex-direction:column; gap:0;
+      border-radius:10px; padding:15px 24px;
+      display:flex; flex-direction:column; gap:10;
       cursor:pointer; transition:transform 0.28s, box-shadow 0.28s, border-color 0.28s;
       position:relative; overflow:hidden;
     }
@@ -802,7 +837,7 @@
     .team-intro .sec-body { margin:0 auto 32px; }
     
     .meet-team-btn {
-      display:inline-flex; align-items:center; gap:8px;
+      display:inline-flex; align-items:center; gap:8px; margin-top: 15px;
       background:linear-gradient(135deg, #2563eb, #00f5ff);
       border:none; border-radius:12px; padding:14px 28px;
       font-family:var(--head); font-size:0.68rem; font-weight:700;
@@ -899,6 +934,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="team.html">Team</a></li>
       <li><a href="#newsletter">Newsletter</a></li>
+      <a href="#contact">Contact</a>
     </ul>
   </nav>
 
@@ -1032,7 +1068,7 @@
 
         <div class="reveal svc-card svc-card-uiux" onclick="openService('uiux')" tabindex="0">
           <div class="svc-card-top">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxQeI5PixndjzcPr6za3ZC3za2OzIQdWC2Yc7vZhzUsg&s=10" alt="art palette emoji" class="svc-emoji" width="280" height="300"  style="border-radius: 10px">
+            <img src="UXDesign.jpg" alt="art palette emoji" class="svc-emoji" width="280" height="300"  style="border-radius: 10px">
           </div>
           <h3 class="svc-card-title">UI &amp; UX Design</h3>
           <p class="svc-card-body">UI stands for <strong>User Interface</strong> basically, how your website looks. UX stands for <strong>User Experience</strong> how easy and enjoyable it is to use. Think of it like a shop: UI is the paint on the walls and the display shelves, UX is whether customers can actually find what they came in for without getting lost. We design both so your website looks great <em>and</em> makes sense to the people visiting it.</p>
@@ -1045,7 +1081,7 @@
 
         <div class="reveal svc-card svc-card-fe" onclick="openService('frontend')" tabindex="0" style="transition-delay:0.05s">
           <div class="svc-card-top">
-           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2kWsLs0VYXi4MTKpaSdXCRJIBITiu4CkhN2PmdjLSew&s=10" alt="laptop emoji" class="svc-emoji" width="280" height="300" style="border-radius: 10px">
+           <img src="MamieDev.jpg" alt="laptop emoji" class="svc-emoji" width="280" height="300" style="border-radius: 10px">
            
           </div>
           <h3 class="svc-card-title">Frontend Development</h3>
@@ -1117,7 +1153,7 @@
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
             <div>
               <div class="svc-card-top">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf5qMM94fZWC7Dp3jlR8BVC88szmJhaj87wU4s6-TqlQ&s=10" alt="robot emoji" class="svc-emoji" width="280" height="300" style="border-radius: 10px">
+                <img src="Automation.jpg" alt="robot emoji" class="svc-emoji" width="280" height="300" style="border-radius: 10px">
               </div>
               <h3 class="svc-card-title" style="font-size:1.3rem;">AI Automation</h3>
               <p class="svc-card-body">AI Automation means using <strong>artificial intelligence to do tasks automatically</strong>, tasks that would otherwise take up your team's time. For example: a customer sends a message to your website at 2am asking about your pricing. Instead of waiting until morning for someone to reply, an AI assistant answers them instantly, correctly, and in a friendly tone. Or imagine your business receives dozens of forms or documents every day AI can read them, sort them, and file them without a human touching each one. We build these kinds of smart systems directly into your website or business tools.</p>
@@ -1129,10 +1165,10 @@
                 <p class="svc-why-text">Your team spends hours on repetitive tasks that a machine could do in seconds. Why waste smart people on answering the same questions? AI handles the dumb stuff so they can focus on what actually needs human brains.</p>
               </div>
               <div class="ai-examples">
-                <div class="ai-ex"><span>💬</span> AI chat assistant on your website</div>
-                <div class="ai-ex"><span>📄</span> Automatic document sorting</div>
-                <div class="ai-ex"><span>🔍</span> Smart product recommendations</div>
-                <div class="ai-ex"><span>⚙️</span> Auto-reply to common enquiries</div>
+                <div class="ai-ex"> AI chat assistant on your website</div>
+                <div class="ai-ex"> Automatic document sorting</div>
+                <div class="ai-ex"> Smart product recommendations</div>
+                <div class="ai-ex"> Auto-reply to common enquiries</div>
               </div>
             </div>
           </div>
@@ -1176,7 +1212,7 @@
             </div>
           </div>
 
-          <a href="team.html" class="meet-team-btn">↓ Meet the Team</a>
+          <a href="team.html" class="meet-team-btn">Meet the Team</a>
         </div>
 
         <!-- Team Photo Placeholder -->
@@ -1219,10 +1255,9 @@
             </ul>
             <div class="p-footer">
               <div class="p-status-row">
-                <div class="p-status"><span class="sdot sdot-blue"></span> In Development</div>
+                <div class="p-status"> In Development</div>
                 <div class="p-pct">20%</div>
               </div>
-              <div class="mini-track"><div class="mini-fill"></div></div>
             </div>
           </div>
         </div>
@@ -1245,10 +1280,9 @@
             </ul>
             <div class="p-footer">
               <div class="p-status-row">
-                <div class="p-status"><span class="sdot sdot-violet"></span> In Development</div>
+                <div class="p-status"> In Development</div>
                 <div class="p-pct">66%</div>
               </div>
-              <div class="mini-track"><div class="mini-fill"></div></div>
             </div>
           </div>
         </div>
@@ -1272,11 +1306,9 @@
             </ul>
             <div class="p-footer">
               <div class="p-status-row">
-                <div class="p-status"><span class="sdot sdot-green"></span> In Development</div>
+                <div class="p-status"> In Development</div>
                 <div class="p-pct">45%</div>
               </div>
-              <div class="mini-track"><div class="mini-fill"></div></div>
-            </div>
           </div>
         </div>
 
@@ -1293,13 +1325,13 @@
         <div class="reveal">
           <div class="sec-label">Stay in the loop</div>
           <h2 class="sec-title">The <span class="hl">Ronnie Tech</span><br>Newsletter</h2>
-          <p class="sec-body" style="margin-bottom:0">Our internal-style company newsletter — launch news, dev updates, web tips, and team highlights. Like a newspaper, but for your inbox.</p>
+          <p class="sec-body" style="margin-bottom:0">Our internal-style company newsletter, launch news, dev updates, web tips, and team highlights. Like a newspaper, but for your inbox.</p>
 
           <ul class="nl-perks">
-            <li><span class="nl-perk-icon"></span> Launch announcements for all three products</li>
-            <li><span class="nl-perk-icon"></span> Behind-the-scenes build updates & dev logs</li>
-            <li><span class="nl-perk-icon"></span> Web dev tips you can actually use</li>
-            <li><span class="nl-perk-icon"></span> Team spotlights and company milestones</li>
+            <li> Launch announcements for all three products</li>
+            <li> Behind-the-scenes build updates & dev logs</li>
+            <li> Web dev tips you can actually use</li>
+            <li> Team spotlights and company milestones</li>
           </ul>
 
           <div id="nlFormWrap">
@@ -1328,20 +1360,16 @@
         <div class="reveal" style="transition-delay:0.15s">
           <div class="nl-paper">
             <div class="nl-paper-head">
-              <div class="nl-paper-name">⬡ &nbsp;Ronnie Tech Insider</div>
-              <div class="nl-edition">Vol. 01 · Issue 01</div>
+              <div class="nl-paper-name"> &nbsp;Ronnie Tech Insider</div>
+              <div class="nl-edition">Issue 01</div>
             </div>
-            <div class="nl-ticker">
-              <div class="ticker-inner">
-                🔵 QRGO hits 60% dev milestone &nbsp;·&nbsp; 🟣 RESQGo first vehicle fleet onboarded &nbsp;·&nbsp; 🟢 InkLoop editor UI live in staging &nbsp;·&nbsp; 🌐 Ronnie Tech Space website launching soon &nbsp;·&nbsp; 🔵 QRGO hits 60% dev milestone &nbsp;·&nbsp; 🟣 RESQGo first vehicle fleet onboarded &nbsp;·&nbsp; 🟢 InkLoop editor UI live in staging &nbsp;·&nbsp; 🌐 Ronnie Tech Space website launching soon
-              </div>
             </div>
             <div class="nl-articles">
               <div class="nl-art">
                 <div class="nl-n">01</div>
                 <div>
                   <div class="nl-at">QRGO enters active development phase</div>
-                  <div class="nl-ad">The QR attendance system has crossed the 60% build milestone. Beta tests with pilot companies in Johannesburg are now scheduled for next month.</div>
+                  <div class="nl-ad">The QR attendance system has crossed the 40% build milestone. Beta tests with pilot companies in Johannesburg are now scheduled for upcoming month.</div>
                   <span class="nl-badge">📦 Product Update</span>
                 </div>
               </div>
@@ -1364,11 +1392,56 @@
             </div>
             <div class="nl-foot">
               <span>Ronnie Tech Space · Johannesburg, ZA</span>
-              <span>3 articles this edition</span>
             </div>
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━━━━━━━━━━ CONTACT ━━━━━━━━━━━ -->
+  <section id="contact">
+    <div class="inner">
+      <div class="contact-content reveal">
+        <div class="sec-label">Get in touch</div>
+        <h2 class="sec-title">Let's <span class="hl">talk.</span></h2>
+        <p class="sec-body">Have a project in mind? Want to chat about web development, our products, or just say hello? We'd love to hear from you.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Email -->
+        <div class="contact-card reveal">
+          <h3>Email</h3>
+          <p>
+            <a href="mailto:info@ronniebuilds.co.za">info@ronniebuilds.co.za</a>
+            <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.4);">We reply within 24 hours</span>
+          </p>
+        </div>
+
+        <!-- Phone -->
+        <div class="contact-card reveal" style="transition-delay:0.1s">
+          
+          <h3>Phone</h3>
+          <p>
+            <a href="tel: 011 877 923">065 114 9437</a>
+            <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.4);">Mon – Fri, 9am – 5pm SAST</span>
+          </p>
+        </div>
+
+        <!-- Office -->
+        <div class="contact-card reveal" style="transition-delay:0.2s">
+          <h3>Office</h3>
+          <p>
+            55 West Street,WeWork<br>Sandton, 2196<br>
+            Johannesburg<br>South Africa
+            <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.4);">Available for meetings</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-cta">
+        <a href="mailto:info@ronniebuilds.co.za" class="contact-btn">✉ Send us an email</a>
       </div>
     </div>
   </section>
@@ -1378,14 +1451,14 @@
     <a href="#hero" style="text-decoration:none;cursor:pointer;">
       <div class="foot-logo"><img src="Ronnie.Logo.png" alt="Ronnie Tech Space logo">RONNIE TECH SPACE</div>
     </a>
-    <div class="foot-tag">// Web Development Studio · Johannesburg, South Africa</div>
+    <div class="foot-tag">// Development Studio · Johannesburg, South Africa</div>
       <div class="foot-nav">
       <a href="#hero">Home</a>
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#newsletter">Newsletter</a>
-      <a href="mailto:info@ronniebuilds.co.za">Contact</a>
+      <a href="#contact">Contact</a>
     </div>
     <div class="foot-copy">
       &copy; 2026 Ronnie Tech Space &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp;
@@ -1472,49 +1545,49 @@
   const SERVICES = [
     {
       id:'uiux', emoji:'', eyebrow:'Service 01 of 07', title:'UI & UX Design',
-      desc:'Great design is the difference between a website people use and one they close in three seconds. We design interfaces that feel effortless — beautiful, intuitive, and aligned with your brand from the first pixel to the last interaction.',
+      desc:'Great design is the difference between a website people use and one they close in three seconds. We design interfaces that feel effortless, beautiful, intuitive, and aligned with your brand from the first pixel to the last interaction.',
       features:['User research & persona mapping','Wireframing and interactive prototypes','High-fidelity visual design','Responsive layouts for all screen sizes','Design system creation','Accessibility (WCAG) compliance'],
       tech:['Figma','Adobe XD','Framer','Zeplin','Storybook'],
       bestFor:'Startups launching their first product, businesses rebranding, or anyone whose current site is not converting visitors into customers.'
     },
     {
       id:'frontend', emoji:'', eyebrow:'Service 02 of 07', title:'Frontend Development',
-      desc:'We turn designs into fast, pixel-perfect, living websites. Our frontend code is clean, maintainable, and built for performance — not just looks. Every animation is purposeful, every interaction is smooth.',
+      desc:'We turn designs into fast, pixel-perfect, living websites. Our frontend code is clean, maintainable, and built for performance, not just looks. Every animation is purposeful, every interaction is smooth.',
       features:['HTML5 / CSS3 / JavaScript (ES6+)','React & Next.js applications','Vue.js & Nuxt.js','Responsive & mobile-first development','Component-based architecture','Cross-browser compatibility'],
       tech:['React','Next.js','Vue','TypeScript','Tailwind CSS','Vite'],
       bestFor:'Businesses that need a modern, fast-loading website or web app built properly — not patched together with page builders.'
     },
     {
       id:'backend', emoji:'', eyebrow:'Service 03 of 07', title:'Backend Development',
-      desc:'The engine under the hood. We build the APIs, databases, and server logic that power your product — secure, scalable, and built to handle whatever you throw at it.',
+      desc:'The engine under the hood. We build the APIs, databases, and server logic that power your product, secure, scalable, and built to handle whatever you throw at it.',
       features:['RESTful API design & development','Database architecture & optimisation','User authentication & authorisation','Third-party API integrations','Cloud deployment & hosting setup','Server security hardening'],
       tech:['Node.js','Python','PHP','PostgreSQL','MySQL','MongoDB','Redis'],
-      bestFor:'Products that need real logic behind them — user accounts, data storage, payment processing, integrations with external services.'
+      bestFor:'Products that need real logic behind them, user accounts, data storage, payment processing, integrations with external services.'
     },
     {
       id:'ecommerce', emoji:'', eyebrow:'Service 04 of 07', title:'E-Commerce Solutions',
-      desc:'Online stores that actually sell. We build e-commerce experiences that make buying feel easy — fast product pages, smooth checkout, and a backend you can actually manage without a developer on speed dial.',
+      desc:'Online stores that actually sell. We build e-commerce experiences that make buying feel easy, fast product pages, smooth checkout, and a backend you can actually manage without a developer on speed dial.',
       features:['Custom online store development','Shopping cart & checkout flow','Payment gateway integration','Product catalogue management','Inventory & order management','Mobile shopping optimisation'],
-      tech:['WooCommerce','Shopify','Stripe','PayFast','PayPal','Flutterwave'],
+      tech:['WooCommerce','Shopify','Stripe','PayFast','PayPal','Flutterwave', 'HubSpot'],
       bestFor:'Retailers, boutiques, wholesalers, or service businesses wanting to sell online with full control over their store.'
     },
     {
       id:'webapps', emoji:'', eyebrow:'Service 05 of 07', title:'Web Apps & Dashboards',
-      desc:"When a website isn't enough, you need a web application. We build custom tools, internal dashboards, and full-stack apps that your team actually wants to use — not just can use.",
+      desc:"When a website isn't enough, you need a web application. We build custom tools, internal dashboards, and full-stack apps that your team actually wants to use, not just can use.",
       features:['Custom web application development','Admin & management dashboards','Real-time data display','Role-based access control','Data visualisation & charts','Progressive Web App (PWA) support'],
       tech:['React','Chart.js','D3.js','Node.js','WebSockets','Firebase'],
       bestFor:'Businesses needing internal tools, client portals, reporting dashboards, booking systems, or anything that goes beyond a standard website.'
     },
     {
       id:'seo', emoji:'', eyebrow:'Service 06 of 07', title:'SEO & Performance',
-      desc:"What's the point of a beautiful website if nobody can find it? We optimise your site to rank on Google and load so fast your visitors never bounce — because speed is the best UX.",
+      desc:"What's the point of a beautiful website if nobody can find it? We optimise your site to rank on Google and load so fast your visitors never bounce, because speed is the best UX.",
       features:['Technical SEO audit & fixes','Core Web Vitals optimisation','Page speed & load time tuning','On-page SEO (meta, schema, headings)','Google Search Console setup','Ongoing SEO reporting'],
       tech:['Lighthouse','PageSpeed Insights','Ahrefs','Google Analytics','Schema.org','Cloudflare'],
       bestFor:"Any business that wants more organic traffic, better Google rankings, and a site that doesn't fail the technical checks that kill your visibility."
     },
     {
       id:'ai', emoji:'', eyebrow:'Service 07 of 07', title:'AI Automation',
-      desc:'We integrate AI into your web products to automate repetitive tasks, power smarter features, and give your business a serious competitive edge. From AI chatbots to intelligent data processing — we make it practical, not gimmicky.',
+      desc:'We integrate AI into your web products to automate repetitive tasks, power smarter features, and give your business a serious competitive edge. From AI chatbots to intelligent data processing, we make it practical, not gimmicky.',
       features:['AI chatbot integration (GPT, Claude, Gemini)','Automated document processing','Smart form handling & routing','Content generation pipelines','Recommendation engines','AI-powered search & filtering'],
       tech:['OpenAI','Anthropic Claude','LangChain','Python','n8n','Zapier','Vercel AI SDK'],
       bestFor:'Businesses that want to automate customer support, speed up internal workflows, add smart features to their product, or just stop doing things manually that a machine can handle.'
