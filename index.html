@@ -1602,6 +1602,8 @@
   const EJS_SERVICE_ID         = 'service_t0huj7p';
   const EJS_NOTIFY_TEMPLATE_ID = 'template_r9tglya';
   const EJS_TEMPLATE_ID        = 'template_wc5g0ip';
+  const EJS_LOGO_URL           = 'https://ronniebuilds.co.za/Ronnie.Logo.png';
+  const EJS_WEBSITE_URL        = 'https://ronniebuilds.co.za';
 
   /* ━━━ HERO NOTIFY FORM ━━━ */
   function handleNotifySubmit() {
@@ -1622,6 +1624,10 @@
     emailjs.send(EJS_SERVICE_ID, EJS_NOTIFY_TEMPLATE_ID, {
       to_email: email,
       to_name:  email.split('@')[0],
+      logo_url: EJS_LOGO_URL,
+      logo: EJS_LOGO_URL,
+      website_url: EJS_WEBSITE_URL,
+      brand_name: 'Ronnie Tech Space',
       message:  'Thanks for signing up! We will notify you the moment Ronnie Tech Space goes live.'
     })
     .then(() => {
@@ -1673,6 +1679,10 @@
       to_email: email,
       to_name:  toName,
       interest: interest,
+      logo_url: EJS_LOGO_URL,
+      logo: EJS_LOGO_URL,
+      website_url: EJS_WEBSITE_URL,
+      brand_name: 'Ronnie Tech Space',
       message:  'Welcome to the Ronnie Tech Space newsletter! You are now subscribed to our company updates.'
     })
     .then(() => {
