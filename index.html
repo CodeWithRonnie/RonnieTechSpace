@@ -1432,22 +1432,53 @@
   }
 
   /* ━━━ COUNTDOWN ━━━ */
-  const target = new Date(); target.setDate(target.getDate()+47); target.setHours(0,0,0,0);
+  // Starts at 63 days and persists the target timestamp in localStorage
+  const COUNTDOWN_DAYS = 63;
+  const LS_KEY = 'rt_target_ts';
+  let target;
+
+  (function initTarget(){
+    try {
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) {
+        const ts = parseInt(saved, 10);
+        if (!Number.isNaN(ts)) target = new Date(ts);
+      }
+    } catch (e) { /* ignore localStorage errors */ }
+
+    if (!target) {
+      target = new Date();
+      target.setDate(target.getDate() + COUNTDOWN_DAYS);
+      target.setHours(0,0,0,0);
+      try { localStorage.setItem(LS_KEY, String(target.getTime())); } catch (e) {}
+    }
+  })();
+
   function pad(n){ return String(n).padStart(2,'0'); }
+
+  let countdownInterval = null;
   function tick() {
-    const d = target - Date.now();
-    if (d <= 0) return;
+    const d = target.getTime() - Date.now();
+    if (d <= 0) {
+      document.getElementById('days').textContent  = '00';
+      document.getElementById('hours').textContent = '00';
+      document.getElementById('mins').textContent  = '00';
+      document.getElementById('secs').textContent  = '00';
+      if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
+      return;
+    }
     document.getElementById('days').textContent  = pad(Math.floor(d/86400000));
     document.getElementById('hours').textContent = pad(Math.floor((d%86400000)/3600000));
     document.getElementById('mins').textContent  = pad(Math.floor((d%3600000)/60000));
     document.getElementById('secs').textContent  = pad(Math.floor((d%60000)/1000));
   }
-  tick(); setInterval(tick, 1000);
+
+  tick(); countdownInterval = setInterval(tick, 1000);
 
   /* ━━━ PROGRESS ━━━ */
   setTimeout(() => {
-    document.getElementById('progFill').style.width = '73%';
-    document.getElementById('pct').textContent = '73%';
+    document.getElementById('progFill').style.width = '54%';
+    document.getElementById('pct').textContent = '54%';
   }, 700);
 
   /* ━━━ SCROLL REVEAL ━━━ */
