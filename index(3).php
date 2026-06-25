@@ -66,7 +66,7 @@
     nav {
       position: fixed; top:0; left:0; right:0; z-index:100;
       display:flex; align-items:center; justify-content:space-between;
-      padding: 16px 38px;
+      padding: 16px 48px;
       background: rgba(4,6,15,0.75);
       backdrop-filter: blur(24px) saturate(180%);
       border-bottom: 1px solid rgba(0,245,255,0.07);
@@ -76,10 +76,14 @@
       letter-spacing: 0.2em; color: var(--cyan);
       display:flex; align-items:center; gap:10px;
     }
-    .nav-logo img {
-      width:100px; height:auto; display:block;
+    .nav-logo-dot {
+      width:8px; height:8px; border-radius:50%; background:var(--cyan);
+      animation: pulse-dot 2s ease-in-out infinite;
     }
-    
+    @keyframes pulse-dot {
+      0%,100% { box-shadow:0 0 0 0 rgba(0,245,255,0.4); }
+      50%      { box-shadow:0 0 0 6px rgba(0,245,255,0); }
+    }
     .nav-links { display:flex; gap:28px; list-style:none; }
     .nav-links a {
       font-family:var(--mono); font-size:0.80rem; letter-spacing:0.12em;
@@ -344,9 +348,8 @@
     .wave-divider svg { width:100%; height:100%; }
 
     /* ═══════════════════════════════ SECTION SHARED ══════════════════════════════ */
-    section { position:relative; z-index:1; background-size: 200px; background-position: center; background-repeat: no-repeat; opacity: 1; }
-    section::before { content:''; position:absolute; inset:0; background-image:url('./Ronnie.Logo.png'); background-size:300px; background-position:center; background-repeat:no-repeat; opacity:0.03; pointer-events:none; z-index:0; }
-    .inner { max-width:1100px; margin:0 auto; padding:96px 32px; position:relative; z-index:1; }
+    section { position:relative; z-index:1; }
+    .inner { max-width:1100px; margin:0 auto; padding:96px 32px; }
     .sec-label {
       font-family:var(--mono); font-size:0.65rem; letter-spacing:0.25em;
       text-transform:uppercase; color:var(--cyan); margin-bottom:14px;
@@ -557,17 +560,12 @@
     }
     .nl-edition { font-family:var(--mono); font-size:0.58rem; color:var(--muted); }
     .nl-ticker {
-      position:relative; box-sizing:border-box;
       font-family:var(--mono); font-size:0.6rem; color:var(--muted);
       padding:8px 22px; background:rgba(255,255,255,0.01);
       border-bottom:1px solid rgba(255,255,255,0.04);
-      white-space:nowrap; overflow:hidden; max-width:100%;
+      white-space:nowrap; overflow:hidden;
     }
-    .ticker-inner {
-      position:absolute; left:0; top:50%; transform:translateY(-50%);
-      display:inline-block; white-space:nowrap; box-sizing:border-box;
-      animation:ticker 18s linear infinite; will-change:transform;
-    }
+    .ticker-inner { display:inline-block; animation:ticker 18s linear infinite; }
     @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
     .nl-articles { padding:16px 22px; display:flex; flex-direction:column; gap:14px; }
@@ -640,10 +638,6 @@
       background:linear-gradient(135deg, #fff 0%, var(--cyan) 60%);
       -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
       margin-bottom:6px;
-      display:flex; align-items:center; justify-content:center; gap:10px;
-    }
-    .foot-logo img {
-      width:28px; height:auto; display:block;
     }
     .foot-tag { font-family:var(--mono); font-size:0.62rem; color:var(--muted); letter-spacing:0.14em; margin-bottom:28px; }
     .foot-nav { display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; }
@@ -814,12 +808,10 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#hero" style="text-decoration:none;cursor:pointer;">
-      <div class="nav-logo">
-        <img src="transparent.logo.png" alt="Ronnie Tech Space logo">
-        RONNIE TECH SPACE
-      </div>
-    </a>
+    <div class="nav-logo">
+      <div class="nav-logo-dot"></div>
+      RONNIE TECH SPACE
+    </div>
     <ul class="nav-links">
       <li><a href="#hero">Home</a></li>
       <li><a href="#services">Services</a></li>
@@ -834,10 +826,12 @@
     <div class="code-rain" id="codeRain"></div>
 
     <div class="hero-eyebrow">
+      <span class="eyebrow-blink"></span>
       Website coming soon
     </div>
 
     <div class="hero-brand">
+      <span class="brand-r">RONNIE TECH</span>
       <span class="brand-sub">Space &nbsp;/&nbsp; Web Development Studio</span>
     </div>
 
@@ -906,9 +900,9 @@
           <div id="modalTech" style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:26px;"></div>
           <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px;">Best for</div>
           <div id="modalBestFor" style="font-size:0.88rem;color:rgba(240,246,255,0.6);line-height:1.75;margin-bottom:28px;"></div>
-            <div id="modalCTA" style="padding:18px;border-radius:14px;text-align:center;background:rgba(0,245,255,0.04);border:1px solid rgba(0,245,255,0.12);">
+          <div id="modalCTA" style="padding:18px;border-radius:14px;text-align:center;background:rgba(0,245,255,0.04);border:1px solid rgba(0,245,255,0.12);">
             <div style="font-family:var(--mono);font-size:0.62rem;color:var(--muted);letter-spacing:0.1em;margin-bottom:8px;">INTERESTED IN THIS SERVICE?</div>
-            <a href="mailto:info@ronniebuilds.co.za" style="font-family:var(--head);font-size:0.72rem;font-weight:700;letter-spacing:0.14em;color:var(--cyan);text-decoration:none;">info@ronniebuilds.co.za →</a>
+            <a href="mailto:hello@ronnietechspace.com" style="font-family:var(--head);font-size:0.72rem;font-weight:700;letter-spacing:0.14em;color:var(--cyan);text-decoration:none;">hello@ronnietechspace.com →</a>
           </div>
         </div>
       </div>
@@ -964,8 +958,8 @@
           <h3 class="svc-card-title">UI &amp; UX Design</h3>
           <p class="svc-card-body">UI stands for <strong>User Interface</strong> basically, how your website looks. UX stands for <strong>User Experience</strong> how easy and enjoyable it is to use. Think of it like a shop: UI is the paint on the walls and the display shelves, UX is whether customers can actually find what they came in for without getting lost. We design both so your website looks great <em>and</em> makes sense to the people visiting it.</p>
           <div class="svc-card-why">
-            <div class="svc-why-label">Why it matters</div>
-            <p class="svc-why-text">People make snap judgments. Bad design or confusing navigation and they're gone before you even had a chance. We make sure your first impression actually lands.</p>
+            <div class="svc-why-label">In simple terms</div>
+            <p class="svc-why-text">If your website confuses visitors, they leave. If it looks outdated, they don't trust you. We make sure the very first thing a potential customer sees makes them want to stick around and take action.</p>
           </div>
           <div class="svc-card-cta">Learn more →</div>
         </div>
@@ -978,8 +972,8 @@
           <h3 class="svc-card-title">Frontend Development</h3>
           <p class="svc-card-body">The "frontend" is everything a visitor sees and interacts with on your website, the buttons, menus, images, text, and animations. When you click a button and something happens, that's frontend code at work. We build this part of your website to be fast, responsive on any device (phone, tablet, laptop), and smooth to use because a clunky website drives customers straight to your competitors.</p>
           <div class="svc-card-why">
-            <div class="svc-why-label">Why it matters</div>
-            <p class="svc-why-text">A slow or broken website kills sales. Half your visitors are on mobile, and if it doesn't work there, they're bouncing to your competitor. We build it fast and rock-solid.</p>
+            <div class="svc-why-label">In simple terms</div>
+            <p class="svc-why-text">Your website is your digital shopfront. If it loads slowly or breaks on mobile, customers walk away. We make sure it works perfectly for everyone, everywhere, on any screen.</p>
           </div>
           <div class="svc-card-cta">Learn more →</div>
         </div>
@@ -992,8 +986,8 @@
           <h3 class="svc-card-title">Backend Development</h3>
           <p class="svc-card-body">The backend is the part of your website that visitors never see but that makes everything work. When someone creates an account, places an order, or submits a contact form, the backend is what saves that information, processes it, and sends it to the right place. Think of it as the kitchen of a restaurant: customers only see the dining room, but nothing gets served without what happens behind the scenes.</p>
           <div class="svc-card-why">
-            <div class="svc-why-label">Why it matters</div>
-            <p class="svc-why-text">Without a solid backend, your site can't actually do anything useful. We build it to handle real traffic, keep customer data safe, and not crash at 3am when you're sleeping.</p>
+            <div class="svc-why-label">In simple terms</div>
+            <p class="svc-why-text">If your website needs to store data, take bookings, send emails, or connect to other software you need a backend. We build it securely so your customer information is always safe and your site keeps running without issues.</p>
           </div>
           <div class="svc-card-cta">Learn more →</div>
         </div>
@@ -1005,8 +999,8 @@
           <h3 class="svc-card-title">E-Commerce Solutions</h3>
           <p class="svc-card-body">E-commerce simply means <strong>selling products or services online</strong>. We build you an online store where customers can browse your products, add items to a cart, and pay all without you needing to be there. Your store works 24 hours a day, 7 days a week, even when you are sleeping. We handle everything from the product listings and the shopping cart to the checkout process and payment integration.</p>
           <div class="svc-card-why">
-            <div class="svc-why-label">Why it matters</div>
-            <p class="svc-why-text">Your store works while you sleep. People buy at 2am, checkout's automated, payments process themselves. That's revenue you're not leaving on the table.</p>
+            <div class="svc-why-label">In simple terms</div>
+            <p class="svc-why-text">Imagine having a salesperson who never sleeps, never takes a lunch break, and can serve hundreds of customers at the same time. That is what a well-built online store does for your business.</p>
           </div>
           <div class="svc-card-cta">Learn more →</div>
         </div>
@@ -1019,8 +1013,8 @@
           <h3 class="svc-card-title">Web Apps &amp; Dashboards</h3>
           <p class="svc-card-body">A web app is like a program but one that runs in your browser instead of being installed on a computer. Think of online banking, Google Docs, or your email inbox those are web apps. We build custom ones tailored to your business: a dashboard that shows you your sales in real time, a booking system for your clients, a staff management tool, or an internal portal your team logs into every day to get work done.</p>
           <div class="svc-card-why">
-            <div class="svc-why-label">Why it matters</div>
-            <p class="svc-why-text">Stop managing business in spreadsheets and messaging apps. A proper web app gives you one central hub where everyone knows where to look. No more hunting for information.</p>
+            <div class="svc-why-label">In simple terms</div>
+            <p class="svc-why-text">If your team is managing important information in messy spreadsheets or juggling multiple WhatsApp groups to coordinate work a custom web app replaces all of that with one clean, organised system built exactly for how your business operates.</p>
           </div>
           <div class="svc-card-cta">Learn more →</div>
         </div>
@@ -1033,8 +1027,8 @@
           <h3 class="svc-card-title">SEO &amp; Performance</h3>
           <p class="svc-card-body">SEO stands for <strong>Search Engine Optimisation</strong>, it is the process of making your website show up when people search on Google. When someone types "best plumber in Johannesburg" or "affordable catering Cape Town", SEO is what determines whether your business appears on page one or page ten. We also optimise your site's speed, because Google ranks faster websites higher and visitors are far more likely to stay on a site that loads quickly.</p>
           <div class="svc-card-why">
-            <div class="svc-why-label">Why it matters</div>
-            <p class="svc-why-text">No one finds you on Google? You're invisible. Good SEO means showing up exactly when someone's searching for what you do. That's free, targeted customers who are ready to buy.</p>
+            <div class="svc-why-label">In simple terms</div>
+            <p class="svc-why-text">Having a beautiful website that nobody can find is like opening a shop in the middle of a field with no road to it. SEO builds the road so the right customers can discover you at exactly the moment they are looking for what you offer.</p>
           </div>
           <div class="svc-card-cta">Learn more →</div>
         </div>
@@ -1052,8 +1046,8 @@
             </div>
             <div>
               <div class="svc-card-why" style="border-color:rgba(139,92,246,0.2);background:rgba(139,92,246,0.04);margin-bottom:16px;">
-                <div class="svc-why-label" style="color:#a78bfa;">Why it matters</div>
-                <p class="svc-why-text">Your team spends hours on repetitive tasks that a machine could do in seconds. Why waste smart people on answering the same questions? AI handles the dumb stuff so they can focus on what actually needs human brains.</p>
+                <div class="svc-why-label" style="color:#a78bfa;">In simple terms</div>
+                <p class="svc-why-text">Think about all the repetitive things your team does every day answering the same questions, sorting emails, updating records, chasing people for information. AI Automation handles those tasks automatically, so your people can focus on the work that actually needs a human. It is not about replacing your team it is about giving them back their time.</p>
               </div>
               <div class="ai-examples">
                 <div class="ai-ex"><span>💬</span> AI chat assistant on your website</div>
@@ -1075,13 +1069,13 @@
         <div class="reveal">
           <div class="sec-label">Who we are</div>
           <h2 class="sec-title">We make the web<br>look <span class="hl">extraordinary.</span></h2>
-          <p class="sec-body">Ronnie Tech Space is a web development studio that gives a damn. We build custom, high-performance websites and web apps, not templates. Every pixel is intentional, every line of code is clean, and every project ships on time.</p>
+          <p class="sec-body">Ronnie Tech Space is a web development studio that gives a damn. We build custom, high-performance websites and web apps — not templates. Every pixel is intentional, every line of code is clean, and every project ships on time.</p>
 
           <ul class="value-list">
-            <li><span class="v-icon"></span> Blazing-fast sites that Google actually loves</li>
-            <li><span class="v-icon"></span> Built around your goals, not cookie-cutter templates</li>
-            <li><span class="v-icon"</span> Secure, scalable, and built to last</li>
-            <li><span class="v-icon"></span> Honest quotes, real deadlines, zero drama</li>
+            <li><span class="v-icon">⚡</span> Blazing-fast sites that Google actually loves</li>
+            <li><span class="v-icon">🎯</span> Built around your goals, not cookie-cutter templates</li>
+            <li><span class="v-icon">🔒</span> Secure, scalable, and built to last</li>
+            <li><span class="v-icon">🤝</span> Honest quotes, real deadlines, zero drama</li>
           </ul>
 
           <div class="stats-row">
@@ -1098,7 +1092,7 @@
               <div class="stat-l">Based in SA</div>
             </div>
             <div class="stat-card">
-              <div class="stat-n">2026</div>
+              <div class="stat-n">2025</div>
               <div class="stat-l">Launching Soon</div>
             </div>
           </div>
@@ -1131,9 +1125,9 @@
                 <div class="code-line cl-val" style="width:45%;animation-delay:1.3s"></div>
               </div>
             </div>
-            <div class="float-badge fb-speed"> 99 Perf Score</div>
-            <div class="float-badge fb-score"> SEO Ready</div>
-            <div class="float-badge fb-deploy"> Deployed!</div>
+            <div class="float-badge fb-speed">⚡ 99 Perf Score</div>
+            <div class="float-badge fb-score">🎯 SEO Ready</div>
+            <div class="float-badge fb-deploy">🚀 Deployed!</div>
           </div>
         </div>
       </div>
@@ -1146,7 +1140,7 @@
       <div class="reveal">
         <div class="sec-label">Upcoming products</div>
         <h2 class="sec-title">Three products.<br>Three <span class="hl">real problems solved.</span></h2>
-        <p class="sec-body">We're not just building websites for others, we're launching our own web-based products that fix genuine pain points for businesses and their people.</p>
+        <p class="sec-body">We're not just building websites for others — we're launching our own web-based products that fix genuine pain points for businesses and their people.</p>
       </div>
 
       <div class="projects-grid">
@@ -1154,12 +1148,9 @@
         <!-- QRGO -->
         <div class="p-card card-qr reveal">
           <div class="p-card-inner">
-            <div class="p-emoji">
-            <img src="QRGo.png" alt="ambulance image" width="280" height="300" style="border-radius: 10px">
-
-            </div>
+            <div class="p-emoji">📲</div>
             <span class="p-tag">HR · Workforce Tech</span>
-            <h3 class="p-title">QRGO  Smart Clock-In</h3>
+            <h3 class="p-title">QRGO — Smart Clock-In</h3>
             <p class="p-desc">Scan a QR code, you're clocked in. Scan again, you're out. No apps. No fuss. Every scan logs straight into your company's system with a timestamp.</p>
             <ul class="p-features">
               <li><span class="p-feat-dot"></span> Unique QR per employee</li>
@@ -1171,22 +1162,20 @@
             <div class="p-footer">
               <div class="p-status-row">
                 <div class="p-status"><span class="sdot sdot-blue"></span> In Development</div>
-                <div class="p-pct">20%</div>
+                <div class="p-pct">60%</div>
               </div>
               <div class="mini-track"><div class="mini-fill"></div></div>
             </div>
           </div>
         </div>
 
-        <!-- RESQGO -->
+        <!-- ERGO -->
         <div class="p-card card-ergo reveal" style="transition-delay:0.1s">
           <div class="p-card-inner">
-            <div class="p-emoji">
-              <img src="RESQGo.png" alt="ambulance image" width="280" height="300" style="border-radius: 10px">
-            </div>
+            <div class="p-emoji">🚗</div>
             <span class="p-tag">Health · Transport</span>
-            <h3 class="p-title">RESQGo  Medical On-Demand</h3>
-            <p class="p-desc">Someone gets sick at work, one tap, and the nearest standby car is dispatched. Think Uber, but the cars are always waiting, and they're there for when it actually matters.</p>
+            <h3 class="p-title">erGo — Medical On-Demand</h3>
+            <p class="p-desc">Someone gets sick at work — one tap, the nearest standby car is dispatched. Think Uber, but the cars are always waiting, and they're there for when it actually matters.</p>
             <ul class="p-features">
               <li><span class="p-feat-dot"></span> Live map of standby vehicles</li>
               <li><span class="p-feat-dot"></span> One-tap dispatch from any browser</li>
@@ -1197,7 +1186,7 @@
             <div class="p-footer">
               <div class="p-status-row">
                 <div class="p-status"><span class="sdot sdot-violet"></span> In Development</div>
-                <div class="p-pct">66%</div>
+                <div class="p-pct">35%</div>
               </div>
               <div class="mini-track"><div class="mini-fill"></div></div>
             </div>
@@ -1207,13 +1196,10 @@
         <!-- INKLOOP -->
         <div class="p-card card-ink reveal" style="transition-delay:0.2s">
           <div class="p-card-inner">
-            <div class="p-emoji">
-              <img src="InkLoop.png" alt="newspaper image" width="280" height="300" style="border-radius: 10px">
-
-            </div>
+            <div class="p-emoji">📰</div>
             <span class="p-tag">Internal Comms</span>
-            <h3 class="p-title">InkLoop  Company Newspaper</h3>
-            <p class="p-desc">Your company's own digital newspaper. Publish announcements, team spotlights, and internal updates in a proper newspaper format, no more mass emails nobody reads.</p>
+            <h3 class="p-title">InkLoop — Company Newspaper</h3>
+            <p class="p-desc">Your company's own digital newspaper. Publish announcements, team spotlights, and internal updates in a proper newspaper format — no more mass emails nobody reads.</p>
             <ul class="p-features">
               <li><span class="p-feat-dot"></span> Rich article editor with images</li>
               <li><span class="p-feat-dot"></span> Sections: HR, Tech, Culture, News</li>
@@ -1247,10 +1233,10 @@
           <p class="sec-body" style="margin-bottom:0">Our internal-style company newsletter — launch news, dev updates, web tips, and team highlights. Like a newspaper, but for your inbox.</p>
 
           <ul class="nl-perks">
-            <li><span class="nl-perk-icon"></span> Launch announcements for all three products</li>
-            <li><span class="nl-perk-icon"></span> Behind-the-scenes build updates & dev logs</li>
-            <li><span class="nl-perk-icon"></span> Web dev tips you can actually use</li>
-            <li><span class="nl-perk-icon"></span> Team spotlights and company milestones</li>
+            <li><span class="nl-perk-icon">🚀</span> Launch announcements for all three products</li>
+            <li><span class="nl-perk-icon">🛠️</span> Behind-the-scenes build updates & dev logs</li>
+            <li><span class="nl-perk-icon">💡</span> Web dev tips you can actually use</li>
+            <li><span class="nl-perk-icon">🏆</span> Team spotlights and company milestones</li>
           </ul>
 
           <div id="nlFormWrap">
@@ -1262,17 +1248,17 @@
                 <input type="email" name="email" placeholder="your@email.com" id="nlEmail" />
                 <select name="interest" id="nlInterest">
                   <option value="" disabled selected>I'm most interested in…</option>
-                  <option>QRGO QR Clock-In System</option>
-                  <option>RESQGo Medical Transport</option>
-                  <option>InkLoop Company Newspaper</option>
+                  <option>QRGO — QR Clock-In System</option>
+                  <option>erGo — Medical Transport</option>
+                  <option>InkLoop — Company Newspaper</option>
                   <option>General Web Development</option>
-                  <option>All of the above</option>
+                  <option>All of the above 🔥</option>
                 </select>
                 <button type="button" class="nl-submit" id="nlBtn" onclick="handleNlSubmit()">Subscribe to Newsletter</button>
               </div>
             </form>
           </div>
-          <div class="nl-ok" id="nlOk"> &nbsp;Welcome to the Ronnie Tech inner circle. First edition incoming!</div>
+          <div class="nl-ok" id="nlOk">🎊 &nbsp;Welcome to the Ronnie Tech inner circle. First edition incoming!</div>
         </div>
 
         <!-- Newspaper mockup -->
@@ -1284,7 +1270,7 @@
             </div>
             <div class="nl-ticker">
               <div class="ticker-inner">
-                🔵 QRGO hits 60% dev milestone &nbsp;·&nbsp; 🟣 RESQGo first vehicle fleet onboarded &nbsp;·&nbsp; 🟢 InkLoop editor UI live in staging &nbsp;·&nbsp; 🌐 Ronnie Tech Space website launching soon &nbsp;·&nbsp; 🔵 QRGO hits 60% dev milestone &nbsp;·&nbsp; 🟣 RESQGo first vehicle fleet onboarded &nbsp;·&nbsp; 🟢 InkLoop editor UI live in staging &nbsp;·&nbsp; 🌐 Ronnie Tech Space website launching soon
+                🔵 QRGO hits 60% dev milestone &nbsp;·&nbsp; 🟣 erGo first vehicle fleet onboarded &nbsp;·&nbsp; 🟢 InkLoop editor UI live in staging &nbsp;·&nbsp; 🌐 Ronnie Tech Space website launching soon &nbsp;·&nbsp; 🔵 QRGO hits 60% dev milestone &nbsp;·&nbsp; 🟣 erGo first vehicle fleet onboarded &nbsp;·&nbsp; 🟢 InkLoop editor UI live in staging &nbsp;·&nbsp; 🌐 Ronnie Tech Space website launching soon
               </div>
             </div>
             <div class="nl-articles">
@@ -1299,8 +1285,8 @@
               <div class="nl-art">
                 <div class="nl-n">02</div>
                 <div>
-                  <div class="nl-at">RESQGo secures first transport partner</div>
-                  <div class="nl-ad">We've onboarded our first standby vehicle fleet for the RESQGo pilot. The live dispatch UI is running in staging, looking sharp.</div>
+                  <div class="nl-at">erGo secures first transport partner</div>
+                  <div class="nl-ad">We've onboarded our first standby vehicle fleet for the erGo pilot. The live dispatch UI is running in staging — looking sharp.</div>
                   <span class="nl-badge">🏢 Company News</span>
                 </div>
               </div>
@@ -1308,7 +1294,7 @@
                 <div class="nl-n">03</div>
                 <div>
                   <div class="nl-at">Why internal comms need a redesign</div>
-                  <div class="nl-ad">Mass emails are dead. InkLoop is our answer and here's the thinking behind building a proper company newspaper from scratch.</div>
+                  <div class="nl-ad">Mass emails are dead. InkLoop is our answer — and here's the thinking behind building a proper company newspaper from scratch.</div>
                   <span class="nl-badge">💡 Tech Insight</span>
                 </div>
               </div>
@@ -1326,21 +1312,19 @@
 
   <!-- ━━━━━━━━━━━ FOOTER ━━━━━━━━━━━ -->
   <div id="foot">
-    <a href="#hero" style="text-decoration:none;cursor:pointer;">
-      <div class="foot-logo"><img src="Ronnie.Logo.png" alt="Ronnie Tech Space logo">RONNIE TECH SPACE</div>
-    </a>
+    <div class="foot-logo">RONNIE TECH SPACE</div>
     <div class="foot-tag">// Web Development Studio · Johannesburg, South Africa</div>
-      <div class="foot-nav">
+    <div class="foot-nav">
       <a href="#hero">Home</a>
       <a href="#services">Services</a>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#newsletter">Newsletter</a>
-      <a href="mailto:info@ronniebuilds.co.za">Contact</a>
+      <a href="mailto:hello@ronnietechspace.com">Contact</a>
     </div>
     <div class="foot-copy">
-      &copy; 2026 Ronnie Tech Space &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp;
-      <a href="mailto:info@ronniebuilds.co.za">info@ronniebuilds.co.za</a>
+      &copy; 2025 Ronnie Tech Space &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp;
+      <a href="mailto:hello@ronnietechspace.com">hello@ronnietechspace.com</a>
     </div>
   </div>
 
@@ -1422,53 +1406,22 @@
   }
 
   /* ━━━ COUNTDOWN ━━━ */
-  // Starts at 63 days and persists the target timestamp in localStorage
-  const COUNTDOWN_DAYS = 63;
-  const LS_KEY = 'rt_target_ts';
-  let target;
-
-  (function initTarget(){
-    try {
-      const saved = localStorage.getItem(LS_KEY);
-      if (saved) {
-        const ts = parseInt(saved, 10);
-        if (!Number.isNaN(ts)) target = new Date(ts);
-      }
-    } catch (e) { /* ignore localStorage errors */ }
-
-    if (!target) {
-      target = new Date();
-      target.setDate(target.getDate() + COUNTDOWN_DAYS);
-      target.setHours(0,0,0,0);
-      try { localStorage.setItem(LS_KEY, String(target.getTime())); } catch (e) {}
-    }
-  })();
-
+  const target = new Date(); target.setDate(target.getDate()+47); target.setHours(0,0,0,0);
   function pad(n){ return String(n).padStart(2,'0'); }
-
-  let countdownInterval = null;
   function tick() {
-    const d = target.getTime() - Date.now();
-    if (d <= 0) {
-      document.getElementById('days').textContent  = '00';
-      document.getElementById('hours').textContent = '00';
-      document.getElementById('mins').textContent  = '00';
-      document.getElementById('secs').textContent  = '00';
-      if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
-      return;
-    }
+    const d = target - Date.now();
+    if (d <= 0) return;
     document.getElementById('days').textContent  = pad(Math.floor(d/86400000));
     document.getElementById('hours').textContent = pad(Math.floor((d%86400000)/3600000));
     document.getElementById('mins').textContent  = pad(Math.floor((d%3600000)/60000));
     document.getElementById('secs').textContent  = pad(Math.floor((d%60000)/1000));
   }
-
-  tick(); countdownInterval = setInterval(tick, 1000);
+  tick(); setInterval(tick, 1000);
 
   /* ━━━ PROGRESS ━━━ */
   setTimeout(() => {
-    document.getElementById('progFill').style.width = '54%';
-    document.getElementById('pct').textContent = '54%';
+    document.getElementById('progFill').style.width = '73%';
+    document.getElementById('pct').textContent = '73%';
   }, 700);
 
   /* ━━━ SCROLL REVEAL ━━━ */
@@ -1480,49 +1433,49 @@
   /* ━━━ SERVICE MODAL ━━━ */
   const SERVICES = [
     {
-      id:'uiux', emoji:'', eyebrow:'Service 01 of 07', title:'UI & UX Design',
+      id:'uiux', emoji:'🎨', eyebrow:'Service 01 of 07', title:'UI & UX Design',
       desc:'Great design is the difference between a website people use and one they close in three seconds. We design interfaces that feel effortless — beautiful, intuitive, and aligned with your brand from the first pixel to the last interaction.',
       features:['User research & persona mapping','Wireframing and interactive prototypes','High-fidelity visual design','Responsive layouts for all screen sizes','Design system creation','Accessibility (WCAG) compliance'],
       tech:['Figma','Adobe XD','Framer','Zeplin','Storybook'],
       bestFor:'Startups launching their first product, businesses rebranding, or anyone whose current site is not converting visitors into customers.'
     },
     {
-      id:'frontend', emoji:'', eyebrow:'Service 02 of 07', title:'Frontend Development',
+      id:'frontend', emoji:'⚡', eyebrow:'Service 02 of 07', title:'Frontend Development',
       desc:'We turn designs into fast, pixel-perfect, living websites. Our frontend code is clean, maintainable, and built for performance — not just looks. Every animation is purposeful, every interaction is smooth.',
       features:['HTML5 / CSS3 / JavaScript (ES6+)','React & Next.js applications','Vue.js & Nuxt.js','Responsive & mobile-first development','Component-based architecture','Cross-browser compatibility'],
       tech:['React','Next.js','Vue','TypeScript','Tailwind CSS','Vite'],
       bestFor:'Businesses that need a modern, fast-loading website or web app built properly — not patched together with page builders.'
     },
     {
-      id:'backend', emoji:'', eyebrow:'Service 03 of 07', title:'Backend Development',
+      id:'backend', emoji:'🔧', eyebrow:'Service 03 of 07', title:'Backend Development',
       desc:'The engine under the hood. We build the APIs, databases, and server logic that power your product — secure, scalable, and built to handle whatever you throw at it.',
       features:['RESTful API design & development','Database architecture & optimisation','User authentication & authorisation','Third-party API integrations','Cloud deployment & hosting setup','Server security hardening'],
       tech:['Node.js','Python','PHP','PostgreSQL','MySQL','MongoDB','Redis'],
       bestFor:'Products that need real logic behind them — user accounts, data storage, payment processing, integrations with external services.'
     },
     {
-      id:'ecommerce', emoji:'', eyebrow:'Service 04 of 07', title:'E-Commerce Solutions',
+      id:'ecommerce', emoji:'🛒', eyebrow:'Service 04 of 07', title:'E-Commerce Solutions',
       desc:'Online stores that actually sell. We build e-commerce experiences that make buying feel easy — fast product pages, smooth checkout, and a backend you can actually manage without a developer on speed dial.',
       features:['Custom online store development','Shopping cart & checkout flow','Payment gateway integration','Product catalogue management','Inventory & order management','Mobile shopping optimisation'],
       tech:['WooCommerce','Shopify','Stripe','PayFast','PayPal','Flutterwave'],
       bestFor:'Retailers, boutiques, wholesalers, or service businesses wanting to sell online with full control over their store.'
     },
     {
-      id:'webapps', emoji:'', eyebrow:'Service 05 of 07', title:'Web Apps & Dashboards',
+      id:'webapps', emoji:'📊', eyebrow:'Service 05 of 07', title:'Web Apps & Dashboards',
       desc:"When a website isn't enough, you need a web application. We build custom tools, internal dashboards, and full-stack apps that your team actually wants to use — not just can use.",
       features:['Custom web application development','Admin & management dashboards','Real-time data display','Role-based access control','Data visualisation & charts','Progressive Web App (PWA) support'],
       tech:['React','Chart.js','D3.js','Node.js','WebSockets','Firebase'],
       bestFor:'Businesses needing internal tools, client portals, reporting dashboards, booking systems, or anything that goes beyond a standard website.'
     },
     {
-      id:'seo', emoji:'', eyebrow:'Service 06 of 07', title:'SEO & Performance',
+      id:'seo', emoji:'🚀', eyebrow:'Service 06 of 07', title:'SEO & Performance',
       desc:"What's the point of a beautiful website if nobody can find it? We optimise your site to rank on Google and load so fast your visitors never bounce — because speed is the best UX.",
       features:['Technical SEO audit & fixes','Core Web Vitals optimisation','Page speed & load time tuning','On-page SEO (meta, schema, headings)','Google Search Console setup','Ongoing SEO reporting'],
       tech:['Lighthouse','PageSpeed Insights','Ahrefs','Google Analytics','Schema.org','Cloudflare'],
       bestFor:"Any business that wants more organic traffic, better Google rankings, and a site that doesn't fail the technical checks that kill your visibility."
     },
     {
-      id:'ai', emoji:'', eyebrow:'Service 07 of 07', title:'AI Automation',
+      id:'ai', emoji:'🤖', eyebrow:'Service 07 of 07', title:'AI Automation',
       desc:'We integrate AI into your web products to automate repetitive tasks, power smarter features, and give your business a serious competitive edge. From AI chatbots to intelligent data processing — we make it practical, not gimmicky.',
       features:['AI chatbot integration (GPT, Claude, Gemini)','Automated document processing','Smart form handling & routing','Content generation pipelines','Recommendation engines','AI-powered search & filtering'],
       tech:['OpenAI','Anthropic Claude','LangChain','Python','n8n','Zapier','Vercel AI SDK'],
@@ -1550,11 +1503,8 @@
   }
 
   function navService(dir) {
-    const newIdx = currentSvcIdx + dir;
-    if (newIdx >= 0 && newIdx < SERVICES.length) {
-      currentSvcIdx = newIdx;
-      renderModal();
-    }
+    currentSvcIdx = (currentSvcIdx + dir + SERVICES.length) % SERVICES.length;
+    renderModal();
   }
 
   function renderModal() {
@@ -1589,11 +1539,8 @@
   /* ━━━ EMAILJS INIT ━━━ */
   emailjs.init({ publicKey: 'aSBlUPM-PuaqB2XKT' });
 
-  const EJS_SERVICE_ID         = 'service_t0huj7p';
-  const EJS_NOTIFY_TEMPLATE_ID = 'template_r9tglya';
-  const EJS_TEMPLATE_ID        = 'template_wc5g0ip';
-  const EJS_LOGO_URL           = 'https://ronniebuilds.co.za/Ronnie.Logo.png';
-  const EJS_WEBSITE_URL        = 'https://ronniebuilds.co.za';
+  const EJS_SERVICE_ID  = 'service_8gplny8';
+  const EJS_TEMPLATE_ID = 'template_h0q0r9j';
 
   /* ━━━ HERO NOTIFY FORM ━━━ */
   function handleNotifySubmit() {
@@ -1611,23 +1558,18 @@
     btn.disabled = true;
 
     console.log('📧 Sending via EmailJS...');
-    emailjs.send(EJS_SERVICE_ID, EJS_NOTIFY_TEMPLATE_ID, {
+    emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, {
       to_email: email,
       to_name:  email.split('@')[0],
-      logo_url: EJS_LOGO_URL,
-      logo: EJS_LOGO_URL,
-      website_url: EJS_WEBSITE_URL,
-      brand_name: 'Ronnie Tech Space',
       message:  'Thanks for signing up! We will notify you the moment Ronnie Tech Space goes live.'
     })
     .then(() => {
-      console.log(' EmailJS SUCCESS');
-      document.getElementById('emailIn').value = '';
+      console.log('✅ EmailJS SUCCESS');
       document.getElementById('notifyForm').style.display = 'none';
       document.getElementById('notifyOk').style.display = 'block';
     })
     .catch((err) => {
-      console.error(' EmailJS FAILED:', JSON.stringify(err));
+      console.error('❌ EmailJS FAILED:', JSON.stringify(err));
       btn.textContent = 'Notify Me';
       btn.disabled = false;
       alert('Something went wrong: ' + JSON.stringify(err));
@@ -1642,17 +1584,16 @@
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString()
     })
-    .then(() => console.log(' Netlify form submitted'))
-    .catch((err) => console.warn(' Netlify submit failed (normal on localhost):', err));
+    .then(() => console.log('✅ Netlify form submitted'))
+    .catch((err) => console.warn('⚠️ Netlify submit failed (normal on localhost):', err));
   }
 
   /* ━━━ NEWSLETTER FORM ━━━ */
   function handleNlSubmit() {
     const email    = document.getElementById('nlEmail').value.trim();
-    const name     = document.getElementById('nlName').value.trim();
+    const name     = document.getElementById('nlName').value.trim() || 'there';
     const interest = document.getElementById('nlInterest').value || 'our services';
-    const toName   = name || 'there';
-    console.log(' Newsletter clicked, email:', email, 'name:', name);
+    console.log('📰 Newsletter clicked, email:', email, 'name:', name);
 
     if (!email || !email.includes('@')) {
       document.getElementById('nlEmail').style.borderColor = '#ef4444';
@@ -1667,24 +1608,17 @@
     console.log('📧 Sending newsletter email via EmailJS...');
     emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, {
       to_email: email,
-      to_name:  toName,
+      to_name:  name,
       interest: interest,
-      logo_url: EJS_LOGO_URL,
-      logo: EJS_LOGO_URL,
-      website_url: EJS_WEBSITE_URL,
-      brand_name: 'Ronnie Tech Space',
       message:  'Welcome to the Ronnie Tech Space newsletter! You are now subscribed to our company updates.'
     })
     .then(() => {
-      console.log(' EmailJS SUCCESS');
-      document.getElementById('nlName').value = '';
-      document.getElementById('nlEmail').value = '';
-      document.getElementById('nlInterest').selectedIndex = 0;
+      console.log('✅ EmailJS SUCCESS');
       document.getElementById('nlFormWrap').style.display = 'none';
       document.getElementById('nlOk').style.display = 'block';
     })
     .catch((err) => {
-      console.error(' EmailJS FAILED:', JSON.stringify(err));
+      console.error('❌ EmailJS FAILED:', JSON.stringify(err));
       btn.textContent = 'Subscribe to Newsletter';
       btn.disabled = false;
       alert('Something went wrong: ' + JSON.stringify(err));
@@ -1701,8 +1635,8 @@
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(formData).toString()
     })
-    .then(() => console.log(' Netlify form submitted'))
-    .catch((err) => console.warn(' Netlify submit failed (normal on localhost):', err));
+    .then(() => console.log('✅ Netlify form submitted'))
+    .catch((err) => console.warn('⚠️ Netlify submit failed (normal on localhost):', err));
   }
 
   /* ━━━ SMOOTH NAV ━━━ */
